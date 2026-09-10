@@ -1,0 +1,1030 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da piJunior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Git e GitHub - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-definitivo-git-e-github" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git e GitHub
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-entendendo-os-conceitos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Entendendo os Conceitos Básicos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Entendendo os Conceitos Básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#termos-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termos Importantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuração Inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fluxo-de-trabalho-o-dia-a-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fluxo de Trabalho (O Dia a Dia)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Fluxo de Trabalho (O Dia a Dia)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clonando-o-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clonando o Repositório
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criando-uma-branch-para-sua-tarefa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criando uma Branch para sua Tarefa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salvando-as-alteracoes-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Salvando as Alterações (Commit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviando-para-o-github-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enviando para o GitHub (Push)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trabalhando-em-equipe-colaboracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trabalhando em Equipe (Colaboração)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trabalhando em Equipe (Colaboração)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-ciclo-do-pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Ciclo do Pull Request (PR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-lidar-com-conflitos-merge-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como lidar com Conflitos (Merge Conflict)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resumo-de-comandos-uteis-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resumo de Comandos Úteis (Cheat Sheet)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-materiais-de-estudo-e-aprofundamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Materiais de Estudo e Aprofundamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Materiais de Estudo e Aprofundamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutoriais-e-jogos-interativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutoriais e Jogos Interativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacao-e-convencoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentação e Convenções
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-entendendo-os-conceitos-basicos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Entendendo os Conceitos Básicos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Entendendo os Conceitos Básicos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#termos-importantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Termos Importantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracao-inicial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuração Inicial
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fluxo-de-trabalho-o-dia-a-dia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Fluxo de Trabalho (O Dia a Dia)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Fluxo de Trabalho (O Dia a Dia)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clonando-o-repositorio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clonando o Repositório
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#criando-uma-branch-para-sua-tarefa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Criando uma Branch para sua Tarefa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#salvando-as-alteracoes-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Salvando as Alterações (Commit)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enviando-para-o-github-push" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enviando para o GitHub (Push)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-trabalhando-em-equipe-colaboracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Trabalhando em Equipe (Colaboração)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Trabalhando em Equipe (Colaboração)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-ciclo-do-pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Ciclo do Pull Request (PR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#como-lidar-com-conflitos-merge-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Como lidar com Conflitos (Merge Conflict)?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resumo-de-comandos-uteis-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resumo de Comandos Úteis (Cheat Sheet)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-materiais-de-estudo-e-aprofundamento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Materiais de Estudo e Aprofundamento
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Materiais de Estudo e Aprofundamento">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tutoriais-e-jogos-interativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tutoriais e Jogos Interativos
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentacao-e-convencoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentação e Convenções
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="guia-definitivo-git-e-github">Guia Definitivo: Git e GitHub</h1>
+<p>Bem-vindo ao nosso guia de versionamento! Este documento é parte fundamental da nossa Gestão de Conhecimento Técnico. Aqui você aprenderá desde os conceitos básicos até as melhores práticas de uso do Git e GitHub no dia a dia dos nossos projetos.</p>
+<hr />
+<h2 id="1-entendendo-os-conceitos-basicos">1. Entendendo os Conceitos Básicos</h2>
+<p>Antes de colocar a mão na massa, é essencial entender a diferença entre as duas ferramentas:</p>
+<ul>
+<li><strong>Git:</strong> É o sistema de controle de versão (a ferramenta em si). Ele roda localmente no seu computador e rastreia o histórico de alterações dos arquivos.</li>
+<li><strong>GitHub:</strong> É uma plataforma de hospedagem na nuvem para repositórios Git. Facilita a colaboração, revisão de código (Code Review) e gerenciamento de projetos em equipe.</li>
+</ul>
+<h3 id="termos-importantes">Termos Importantes</h3>
+<ul>
+<li><strong>Repositório (Repo):</strong> A pasta do seu projeto, onde ficam os arquivos e o histórico do Git.</li>
+<li><strong>Commit:</strong> Um "ponto de salvamento" do projeto. Um pacote com as alterações feitas.</li>
+<li><strong>Branch (Ramificação):</strong> Uma linha independente de desenvolvimento. Permite trabalhar em novas funcionalidades sem quebrar o código principal (geralmente a branch <code>main</code> ou <code>master</code>).</li>
+<li><strong>Merge:</strong> A ação de juntar as alterações de uma branch em outra.</li>
+<li><strong>Pull Request (PR):</strong> Um pedido no GitHub para que as suas alterações (em uma branch) sejam revisadas e integradas na branch principal.</li>
+</ul>
+<hr />
+<h2 id="2-configuracao-inicial">2. Configuração Inicial</h2>
+<p>Se você acabou de instalar o Git, o primeiro passo é configurar sua identidade. Abra o terminal e digite:</p>
+<pre><code class="language-bash"># Define seu nome de usuário
+git config --global user.name &quot;Seu Nome Completo&quot;
+
+# Define o seu e-mail (use o mesmo cadastrado no GitHub)
+git config --global user.email &quot;seuemail@exemplo.com&quot;
+
+# Verifica se a configuração foi feita corretamente
+git config --list
+</code></pre>
+<hr />
+<h2 id="3-fluxo-de-trabalho-o-dia-a-dia">3. Fluxo de Trabalho (O Dia a Dia)</h2>
+<p>Aqui está o fluxo básico de trabalho em um projeto existente da nossa organização.</p>
+<h3 id="clonando-o-repositorio">Clonando o Repositório</h3>
+<p>Para baixar um projeto do GitHub para sua máquina:</p>
+<pre><code class="language-bash">git clone https://github.com/nossa-organizacao/nome-do-repo.git
+cd nome-do-repo
+</code></pre>
+<h3 id="criando-uma-branch-para-sua-tarefa">Criando uma Branch para sua Tarefa</h3>
+<p>Sempre crie uma branch nova antes de começar a trabalhar. Nunca programe direto na <code>main</code>!</p>
+<pre><code class="language-bash"># Atualiza sua máquina com os dados da nuvem
+git pull origin main
+
+# Cria e já entra na nova branch
+git checkout -b feature/minha-nova-funcionalidade
+</code></pre>
+<blockquote>
+<p><strong>Dica de Nomenclatura:</strong> Use prefixos para facilitar. Ex: <code>feature/</code> (nova funcionalidade), <code>bugfix/</code> (correção de erro), <code>docs/</code> (documentação).</p>
+</blockquote>
+<h3 id="salvando-as-alteracoes-commit">Salvando as Alterações (Commit)</h3>
+<p>Depois de editar ou criar seus arquivos:</p>
+<pre><code class="language-bash"># Mostra quais arquivos foram modificados
+git status
+
+# Adiciona todos os arquivos modificados para a área de preparação (staging)
+git add .
+
+# Ou adiciona um arquivo específico
+git add arquivo.txt
+
+# Cria o ponto de salvamento com uma mensagem descritiva
+git commit -m &quot;feat: adiciona botão de login na página inicial&quot;
+</code></pre>
+<h3 id="enviando-para-o-github-push">Enviando para o GitHub (Push)</h3>
+<pre><code class="language-bash"># Envia a sua branch com os commits para o repositório remoto no GitHub
+git push origin feature/minha-nova-funcionalidade
+</code></pre>
+<p>Após o <code>push</code>, vá até a página do repositório no GitHub e você verá um botão verde sugerindo a criação de um <strong>Pull Request</strong>.</p>
+<hr />
+<h2 id="4-trabalhando-em-equipe-colaboracao">4. Trabalhando em Equipe (Colaboração)</h2>
+<h3 id="o-ciclo-do-pull-request-pr">O Ciclo do Pull Request (PR)</h3>
+<ol>
+<li>Após fazer o <em>Push</em>, abra um <strong>Pull Request</strong> no GitHub.</li>
+<li>Adicione uma descrição clara do que foi feito.</li>
+<li>Peça para pelo menos um outro membro da equipe revisar seu código (<em>Code Review</em>).</li>
+<li>Se houver correções, basta fazer novos commits na sua máquina e dar <code>git push</code> novamente. O PR é atualizado automaticamente.</li>
+<li>Após aprovado, clique em <strong>Merge Pull Request</strong> no GitHub.</li>
+</ol>
+<h3 id="como-lidar-com-conflitos-merge-conflict">Como lidar com Conflitos (Merge Conflict)?</h3>
+<p>Às vezes, duas pessoas alteram a mesma linha de código. O Git não sabe qual versão manter.
+1. O terminal avisará sobre o conflito no momento do <code>git merge</code> ou <code>git pull</code>.
+2. Abra o arquivo no seu editor de código (como o VS Code). Ele mostrará as duas versões.
+3. Escolha a versão correta (ou mescle ambas manualmente).
+4. Salve o arquivo, rode <code>git add .</code> e <code>git commit -m "Resolve conflitos de merge"</code>.</p>
+<hr />
+<h2 id="5-resumo-de-comandos-uteis-cheat-sheet">5. Resumo de Comandos Úteis (Cheat Sheet)</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Comando</th>
+<th style="text-align: left;">Para que serve?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>git init</code></td>
+<td style="text-align: left;">Inicia um novo repositório Git em uma pasta local.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git log</code></td>
+<td style="text-align: left;">Mostra o histórico de commits do projeto.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git branch</code></td>
+<td style="text-align: left;">Lista todas as branches locais. A que tem um <code>*</code> é a atual.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git switch &lt;nome&gt;</code></td>
+<td style="text-align: left;">Muda para uma branch existente (alternativa moderna ao <code>checkout</code>).</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git restore &lt;arquivo&gt;</code></td>
+<td style="text-align: left;">Desfaz as alterações não commitadas em um arquivo específico.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>git reset --hard</code></td>
+<td style="text-align: left;"><strong>Cuidado:</strong> Apaga todas as alterações não commitadas e volta ao último commit.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-materiais-de-estudo-e-aprofundamento">6. Materiais de Estudo e Aprofundamento</h2>
+<p>Para dominar o Git, a prática é o melhor caminho. Aqui estão os melhores recursos para estudar:</p>
+<h3 id="tutoriais-e-jogos-interativos">Tutoriais e Jogos Interativos</h3>
+<ul>
+<li><strong><a href="https://learngitbranching.js.org/?locale=pt_BR">Learn Git Branching</a>:</strong> O melhor recurso interativo (e gamificado) para entender graficamente como branches e merges funcionam. Altamente recomendado para todos os novos membros!</li>
+<li><strong><a href="https://skills.github.com/">GitHub Skills</a>:</strong> Repositórios de treinamento oficiais do próprio GitHub, onde você aprende fazendo.</li>
+<li><strong><a href="https://www.youtube.com/results?search_query=git+e+github+curso+em+video">Git e Github para Iniciantes (Curso em Vídeo / YouTube)</a>:</strong> Excelente para quem prefere vídeo-aulas didáticas e passo a passo.</li>
+</ul>
+<h3 id="documentacao-e-convencoes">Documentação e Convenções</h3>
+<ul>
+<li><strong><a href="https://git-scm.com/book/pt-br/v2">Git Documentação Oficial (Livro Pro Git)</a>:</strong> Referência completa, em português.</li>
+<li><strong><a href="https://www.conventionalcommits.org/pt-br/v1.0.0/">Conventional Commits</a>:</strong> Convenção para escrever mensagens de commit claras e padronizadas (ex: <code>feat:</code>, <code>fix:</code>, <code>chore:</code>).</li>
+</ul>
+<hr />
+<p><em>Documentação mantida pela Diretoria de Projetos/TI.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "search.suggest"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
