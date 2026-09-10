@@ -1,0 +1,18 @@
+site_name: pi-lib
+site_description: Documentação técnica e guias da piJunior
+site_author: Diretoria de Projetos
+
+theme:
+  name: material
+  palette:
+    # Cores do tema (você pode mudar para as cores da sua EJ)
+    primary: indigo
+    accent: blue
+  features:
+    - navigation.tabs # Cria abas superiores
+    - search.suggest  # Auto-completar na barra de pesquisa
+
+nav:
+  - Início: index.md
+  - Ferramentas:
+    - Git e GitHub: git-github.md
