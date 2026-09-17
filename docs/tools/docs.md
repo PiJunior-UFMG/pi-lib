@@ -91,7 +91,7 @@ Ela é criada/atualizada automaticamente durante a publicação.
 
 ---
 
-# 3. Organização das branches
+## 3. Organização das branches
 
 O projeto possui duas branches importantes:
 
@@ -136,7 +136,7 @@ para adicionar uma nova página.
 
 ---
 
-# 4. Criando uma nova página
+## 4. Criando uma nova página
 
 Crie o arquivo dentro de `docs/`.
 
@@ -165,7 +165,7 @@ em ambientes isolados chamados containers.
 
 ---
 
-# 5. Organização dos arquivos
+## 5. Organização dos arquivos
 
 Evite colocar todos os documentos diretamente dentro de `docs/`.
 
@@ -201,7 +201,7 @@ Uma regra simples:
 
 ---
 
-# 6. Adicionando uma página ao menu
+## 6. Adicionando uma página ao menu
 
 Criar um arquivo `.md` não significa que ele aparecerá automaticamente no menu.
 
@@ -245,7 +245,7 @@ Portanto, para adicionar uma nova página:
 
 ---
 
-# 7. Testando a documentação
+## 7. Testando a documentação
 
 Antes de publicar qualquer alteração, teste o site localmente.
 
@@ -267,7 +267,7 @@ O site local será atualizado automaticamente enquanto você editar os arquivos.
 
 ---
 
-## O que verificar?
+### O que verificar?
 
 Antes de publicar, confira:
 
@@ -282,7 +282,7 @@ Antes de publicar, confira:
 
 ---
 
-# 8. Fluxo de trabalho
+## 8. Fluxo de trabalho
 
 O fluxo recomendado é:
 
@@ -300,7 +300,7 @@ Esse é o fluxo principal que os membros devem seguir.
 
 ---
 
-# 9. Salvando alterações
+## 9. Salvando alterações
 
 Depois de terminar uma alteração, verifique:
 
@@ -328,7 +328,7 @@ git push origin master
 
 ---
 
-# 10. Padrão de commits
+## 10. Padrão de commits
 
 Utilize mensagens de commit claras.
 
@@ -368,7 +368,7 @@ Os principais prefixos são:
 
 ---
 
-# 11. Publicando o site
+## 11. Publicando o site
 
 Depois de enviar as alterações para a `master`, execute:
 
@@ -400,7 +400,7 @@ Pode levar alguns minutos para a atualização aparecer.
 
 ---
 
-# 12. Trabalhando em equipe
+## 12. Trabalhando em equipe
 
 Quando várias pessoas estiverem trabalhando na documentação, recomenda-se criar uma branch específica para cada alteração.
 
@@ -449,7 +449,7 @@ mkdocs gh-deploy
 
 ---
 
-# 13. Adicionando imagens
+## 13. Adicionando imagens
 
 Imagens podem ser organizadas dentro da pasta `docs`.
 
@@ -474,7 +474,7 @@ Utilize caminhos relativos ao arquivo Markdown.
 
 ---
 
-# 14. Padrão recomendado para documentos
+## 14. Padrão recomendado para documentos
 
 Sempre que possível, utilize uma estrutura organizada:
 
@@ -518,9 +518,9 @@ Essa estrutura não é obrigatória. O mais importante é que o conteúdo seja *
 
 ---
 
-# 15. O que não fazer
+## 15. O que não fazer
 
-## Não editar a `gh-pages`
+### Não editar a `gh-pages`
 
 A documentação deve ser alterada na `master`.
 
@@ -534,7 +534,7 @@ para editar documentos.
 
 ---
 
-## Não fazer merge manual com `gh-pages`
+### Não fazer merge manual com `gh-pages`
 
 Não faça:
 
@@ -551,7 +551,7 @@ mkdocs gh-deploy
 
 ---
 
-## Não editar arquivos dentro de `site/`
+### Não editar arquivos dentro de `site/`
 
 Arquivos como:
 
@@ -567,7 +567,7 @@ Altere o arquivo Markdown correspondente dentro de `docs/`.
 
 ---
 
-## Não publicar sem testar
+### Não publicar sem testar
 
 Antes de publicar:
 
@@ -583,7 +583,7 @@ mkdocs serve
 
 ---
 
-# 16. Documentação como conhecimento da empresa
+## 16. Documentação como conhecimento da empresa
 
 A documentação do `pi-lib` deve funcionar como uma **base de conhecimento da PI Junior**.
 

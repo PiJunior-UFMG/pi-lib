@@ -5,15 +5,24 @@ site_author: Diretoria de Projetos
 theme:
   name: material
   palette:
-    # Cores do tema (você pode mudar para as cores da sua EJ)
     primary: indigo
     accent: blue
   features:
-    - navigation.tabs # Cria abas superiores
-    - search.suggest  # Auto-completar na barra de pesquisa
+    - navigation.tabs
+    - search.suggest
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
 
 nav:
   - Início: index.md
   - Ferramentas:
-    - Git e GitHub: tools/git-github.md
-    - Mkdocs: tools/docs.md 
+      - Git e GitHub: tools/git-github.md
+      - MkDocs: tools/docs.md
