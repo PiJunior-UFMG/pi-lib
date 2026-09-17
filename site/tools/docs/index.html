@@ -1,0 +1,1686 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da piJunior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="../git-github/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>MkDocs - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manual-de-documentacao" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MkDocs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../git-github/" class="md-tabs__link">
+          
+  
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-o-pi-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O que é o pi-lib?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estrutura-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Estrutura do projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Estrutura do projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mkdocs.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-organizacao-das-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Organização das branches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Organização das branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        master
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-criando-uma-nova-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Criando uma nova página
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-organizacao-dos-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Organização dos arquivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-adicionando-uma-pagina-ao-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Adicionando uma página ao menu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testando-a-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Testando a documentação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Testando a documentação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-verificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que verificar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fluxo-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Fluxo de trabalho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-salvando-alteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Salvando alterações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-padrao-de-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Padrão de commits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Padrão de commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nova-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nova documentação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atualização
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-publicando-o-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Publicando o site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-trabalhando-em-equipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Trabalhando em equipe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-adicionando-imagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Adicionando imagens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-padrao-recomendado-para-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Padrão recomendado para documentos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-o-que-nao-fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. O que não fazer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. O que não fazer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nao-editar-a-gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não editar a gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-fazer-merge-manual-com-gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não fazer merge manual com gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-editar-arquivos-dentro-de-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não editar arquivos dentro de site/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-publicar-sem-testar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não publicar sem testar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-documentacao-como-conhecimento-da-empresa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Documentação como conhecimento da empresa
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-o-que-e-o-pi-lib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. O que é o pi-lib?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-estrutura-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Estrutura do projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Estrutura do projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        docs/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mkdocsyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mkdocs.yml
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        site/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-organizacao-das-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Organização das branches
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Organização das branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#master" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        master
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-criando-uma-nova-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Criando uma nova página
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-organizacao-dos-arquivos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Organização dos arquivos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-adicionando-uma-pagina-ao-menu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Adicionando uma página ao menu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-testando-a-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Testando a documentação
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Testando a documentação">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#o-que-verificar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O que verificar?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-fluxo-de-trabalho" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Fluxo de trabalho
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-salvando-alteracoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Salvando alterações
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-padrao-de-commits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Padrão de commits
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Padrão de commits">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nova-documentacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nova documentação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atualizacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Atualização
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correcao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Correção
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-publicando-o-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Publicando o site
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-trabalhando-em-equipe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Trabalhando em equipe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-adicionando-imagens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Adicionando imagens
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-padrao-recomendado-para-documentos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Padrão recomendado para documentos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-o-que-nao-fazer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. O que não fazer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="15. O que não fazer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nao-editar-a-gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não editar a gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-fazer-merge-manual-com-gh-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não fazer merge manual com gh-pages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-editar-arquivos-dentro-de-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não editar arquivos dentro de site/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nao-publicar-sem-testar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Não publicar sem testar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-documentacao-como-conhecimento-da-empresa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Documentação como conhecimento da empresa
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="manual-de-documentacao">Manual de Documentação</h1>
+<p>Este manual define o processo padrão para <strong>criar, organizar, revisar e publicar documentação</strong> no <code>pi-lib</code>, nosso portal de documentação técnica hospedado pelo GitHub Pages.</p>
+<p>O objetivo é manter a documentação da PI Junior organizada, consistente e fácil de manter.</p>
+<hr />
+<h2 id="1-o-que-e-o-pi-lib">1. O que é o <code>pi-lib</code>?</h2>
+<p>O <code>pi-lib</code> é o repositório utilizado para armazenar e publicar a documentação técnica da PI Junior.</p>
+<p>Os documentos são escritos em <strong>Markdown</strong> e transformados em um site utilizando o <strong>MkDocs</strong>.</p>
+<p>O processo de publicação é simples:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Documentação&lt;br/&gt;docs/"] --&gt; B["MkDocs"]
+    B --&gt; C["gh-pages"]
+    C --&gt; D["GitHub Pages"]
+    D --&gt; E["Site online"]</code></pre>
+<p>O site está disponível em:</p>
+<p><strong>https://pijunior-ufmg.github.io/pi-lib/</strong></p>
+<hr />
+<h2 id="2-estrutura-do-projeto">2. Estrutura do projeto</h2>
+<p>A estrutura principal do projeto é:</p>
+<div class="highlight"><pre><span></span><code>pi-lib/
+├── docs/
+│   ├── index.md
+│   ├── ferramentas/
+│   │   ├── git-github.md
+│   │   └── documentacao.md
+│   └── projetos/
+│       └── exemplo.md
+│
+├── mkdocs.yml
+├── .gitignore
+└── .git/
+</code></pre></div>
+<h3 id="docs"><code>docs/</code></h3>
+<p>É a pasta onde ficam os arquivos da documentação.</p>
+<p>Todo novo conteúdo deve ser criado dentro dela.</p>
+<p>Exemplo:</p>
+<div class="highlight"><pre><span></span><code>docs/
+├── index.md
+├── ferramentas/
+│   ├── git-github.md
+│   └── docker.md
+├── projetos/
+│   ├── projeto-a.md
+│   └── projeto-b.md
+└── processos/
+    └── desenvolvimento.md
+</code></pre></div>
+<h3 id="mkdocsyml"><code>mkdocs.yml</code></h3>
+<p>É o arquivo de configuração do MkDocs.</p>
+<p>Nele são definidos elementos como:</p>
+<ul>
+<li>nome do site;</li>
+<li>tema;</li>
+<li>navegação;</li>
+<li>plugins;</li>
+<li>extensões;</li>
+<li>configurações gerais.</li>
+</ul>
+<h3 id="site"><code>site/</code></h3>
+<p>A pasta <code>site/</code> contém os arquivos gerados pelo MkDocs.</p>
+<p><strong>Não edite essa pasta manualmente.</strong></p>
+<p>Ela é criada/atualizada automaticamente durante a publicação.</p>
+<hr />
+<h2 id="3-organizacao-das-branches">3. Organização das branches</h2>
+<p>O projeto possui duas branches importantes:</p>
+<ul>
+<li><code>master</code>: arquivos originais da documentação;</li>
+<li><code>gh-pages</code>: versão compilada do site.</li>
+</ul>
+<p>O fluxo é:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["master&lt;br/&gt;Documentação"] --&gt;|"mkdocs gh-deploy"| B["gh-pages&lt;br/&gt;Site gerado"]
+    B --&gt; C["GitHub Pages"]</code></pre>
+<h3 id="master"><code>master</code></h3>
+<p>É onde o trabalho deve ser realizado.</p>
+<p>Contém:</p>
+<div class="highlight"><pre><span></span><code>docs/
+mkdocs.yml
+.gitignore
+</code></pre></div>
+<h3 id="gh-pages"><code>gh-pages</code></h3>
+<p>É utilizada pelo GitHub Pages para disponibilizar o site.</p>
+<p>A <code>gh-pages</code> deve ser atualizada através do MkDocs.</p>
+<p><strong>Não faça alterações manuais nessa branch.</strong></p>
+<p>Também não é necessário fazer:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>gh-pages
+</code></pre></div>
+<p>para adicionar uma nova página.</p>
+<hr />
+<h2 id="4-criando-uma-nova-pagina">4. Criando uma nova página</h2>
+<p>Crie o arquivo dentro de <code>docs/</code>.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>touch<span class="w"> </span>docs/ferramentas/docker.md
+</code></pre></div>
+<p>Depois edite o arquivo:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Docker</span>
+
+Docker é uma plataforma utilizada para criar e executar aplicações
+em ambientes isolados chamados containers.
+
+<span class="gu">## Instalação</span>
+
+...
+
+<span class="gu">## Comandos básicos</span>
+
+...
+</code></pre></div>
+<hr />
+<h2 id="5-organizacao-dos-arquivos">5. Organização dos arquivos</h2>
+<p>Evite colocar todos os documentos diretamente dentro de <code>docs/</code>.</p>
+<p>Organize os arquivos de acordo com o assunto.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>docs/
+├── index.md
+│
+├── ferramentas/
+│   ├── git-github.md
+│   ├── docker.md
+│   └── python.md
+│
+├── projetos/
+│   ├── projeto-a.md
+│   └── projeto-b.md
+│
+├── processos/
+│   ├── desenvolvimento.md
+│   └── deploy.md
+│
+└── tutoriais/
+    ├── instalacao.md
+    └── configuracao.md
+</code></pre></div>
+<p>Uma regra simples:</p>
+<blockquote>
+<p><strong>Organize as pastas de acordo com o assunto da documentação.</strong></p>
+</blockquote>
+<hr />
+<h2 id="6-adicionando-uma-pagina-ao-menu">6. Adicionando uma página ao menu</h2>
+<p>Criar um arquivo <code>.md</code> não significa que ele aparecerá automaticamente no menu.</p>
+<p>A navegação é definida no <code>mkdocs.yml</code>.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">nav</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Início</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.md</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Ferramentas</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Git e GitHub</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ferramentas/git-github.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Docker</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ferramentas/docker.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Python</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ferramentas/python.md</span>
+
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Projetos</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Projeto A</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">projetos/projeto-a.md</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Projeto B</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">projetos/projeto-b.md</span>
+</code></pre></div>
+<p>O resultado será:</p>
+<div class="highlight"><pre><span></span><code>Início
+
+Ferramentas
+├── Git e GitHub
+├── Docker
+└── Python
+
+Projetos
+├── Projeto A
+└── Projeto B
+</code></pre></div>
+<p>Portanto, para adicionar uma nova página:</p>
+<ol>
+<li>Crie o arquivo dentro de <code>docs/</code>;</li>
+<li>Adicione o arquivo ao <code>nav</code> no <code>mkdocs.yml</code>.</li>
+</ol>
+<hr />
+<h2 id="7-testando-a-documentacao">7. Testando a documentação</h2>
+<p>Antes de publicar qualquer alteração, teste o site localmente.</p>
+<p>Execute:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>O MkDocs iniciará um servidor local, normalmente em:</p>
+<div class="highlight"><pre><span></span><code>http://127.0.0.1:8000/
+</code></pre></div>
+<p>Abra o endereço no navegador.</p>
+<p>O site local será atualizado automaticamente enquanto você editar os arquivos.</p>
+<hr />
+<h3 id="o-que-verificar">O que verificar?</h3>
+<p>Antes de publicar, confira:</p>
+<ul>
+<li>conteúdo;</li>
+<li>ortografia;</li>
+<li>títulos;</li>
+<li>navegação;</li>
+<li>links;</li>
+<li>imagens;</li>
+<li>exemplos de código;</li>
+<li>formatação.</li>
+</ul>
+<hr />
+<h2 id="8-fluxo-de-trabalho">8. Fluxo de trabalho</h2>
+<p>O fluxo recomendado é:</p>
+<pre class="mermaid"><code>flowchart TD
+    A["Criar ou editar documentação"] --&gt; B["Testar com mkdocs serve"]
+    B --&gt; C["git add"]
+    C --&gt; D["git commit"]
+    D --&gt; E["git push"]
+    E --&gt; F["mkdocs gh-deploy"]
+    F --&gt; G["Site atualizado"]</code></pre>
+<p>Esse é o fluxo principal que os membros devem seguir.</p>
+<hr />
+<h2 id="9-salvando-alteracoes">9. Salvando alterações</h2>
+<p>Depois de terminar uma alteração, verifique:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>status
+</code></pre></div>
+<p>Adicione os arquivos:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+</code></pre></div>
+<p>Faça o commit:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: adiciona documentação sobre Docker"</span>
+</code></pre></div>
+<p>Depois envie para o GitHub:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
+</code></pre></div>
+<hr />
+<h2 id="10-padrao-de-commits">10. Padrão de commits</h2>
+<p>Utilize mensagens de commit claras.</p>
+<h3 id="nova-documentacao">Nova documentação</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: adiciona documentação sobre Docker"</span>
+</code></pre></div>
+<h3 id="atualizacao">Atualização</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: atualiza guia de Git"</span>
+</code></pre></div>
+<h3 id="correcao">Correção</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: corrige links da documentação"</span>
+</code></pre></div>
+<h3 id="configuracao">Configuração</h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"chore: atualiza configuração do MkDocs"</span>
+</code></pre></div>
+<p>Os principais prefixos são:</p>
+<table>
+<thead>
+<tr>
+<th>Prefixo</th>
+<th>Utilização</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docs:</code></td>
+<td>Documentação</td>
+</tr>
+<tr>
+<td><code>fix:</code></td>
+<td>Correções</td>
+</tr>
+<tr>
+<td><code>feat:</code></td>
+<td>Novas funcionalidades</td>
+</tr>
+<tr>
+<td><code>chore:</code></td>
+<td>Configuração e manutenção</td>
+</tr>
+<tr>
+<td><code>refactor:</code></td>
+<td>Reorganização</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-publicando-o-site">11. Publicando o site</h2>
+<p>Depois de enviar as alterações para a <code>master</code>, execute:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<p>Esse comando:</p>
+<ol>
+<li>gera o site;</li>
+<li>atualiza a <code>gh-pages</code>;</li>
+<li>envia a nova versão para o GitHub Pages.</li>
+</ol>
+<p>O processo é:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["master"] --&gt; B["MkDocs"]
+    B --&gt; C["gh-pages"]
+    C --&gt; D["GitHub Pages"]
+    D --&gt; E["Site atualizado"]</code></pre>
+<p>Após o comando, o site poderá ser acessado em:</p>
+<p><strong>https://pijunior-ufmg.github.io/pi-lib/</strong></p>
+<p>Pode levar alguns minutos para a atualização aparecer.</p>
+<hr />
+<h2 id="12-trabalhando-em-equipe">12. Trabalhando em equipe</h2>
+<p>Quando várias pessoas estiverem trabalhando na documentação, recomenda-se criar uma branch específica para cada alteração.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>master
+git<span class="w"> </span>pull<span class="w"> </span>origin<span class="w"> </span>master
+
+git<span class="w"> </span>switch<span class="w"> </span>-c<span class="w"> </span>docs/guia-docker
+</code></pre></div>
+<p>Faça as alterações e teste:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<p>Depois:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>add<span class="w"> </span>.
+git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"docs: adiciona guia de Docker"</span>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>docs/guia-docker
+</code></pre></div>
+<p>No GitHub, abra um <strong>Pull Request</strong> para a <code>master</code>.</p>
+<p>O fluxo será:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["master"] --&gt; B["Branch da documentação"]
+    B --&gt; C["Alterações"]
+    C --&gt; D["Pull Request"]
+    D --&gt; E["Revisão"]
+    E --&gt; F["Merge"]
+    F --&gt; A</code></pre>
+<p>Depois que a alteração estiver na <code>master</code>, o site pode ser publicado com:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<hr />
+<h2 id="13-adicionando-imagens">13. Adicionando imagens</h2>
+<p>Imagens podem ser organizadas dentro da pasta <code>docs</code>.</p>
+<p>Por exemplo:</p>
+<div class="highlight"><pre><span></span><code>docs/
+├── ferramentas/
+│   ├── git-github.md
+│   └── imagens/
+│       ├── git-flow.png
+│       └── github-pr.png
+</code></pre></div>
+<p>No Markdown:</p>
+<div class="highlight"><pre><span></span><code>![<span class="nt">Fluxo do Git</span>](<span class="na">imagens/git-flow.png</span>)
+</code></pre></div>
+<p>Utilize caminhos relativos ao arquivo Markdown.</p>
+<hr />
+<h2 id="14-padrao-recomendado-para-documentos">14. Padrão recomendado para documentos</h2>
+<p>Sempre que possível, utilize uma estrutura organizada:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Nome do Documento</span>
+
+Breve descrição sobre o objetivo deste documento.
+
+---
+
+<span class="gu">## 1. Introdução</span>
+
+Explique o assunto.
+
+<span class="gu">## 2. Pré-requisitos</span>
+
+Liste o que é necessário.
+
+<span class="gu">## 3. Configuração</span>
+
+Explique como configurar.
+
+<span class="gu">## 4. Utilização</span>
+
+Explique como utilizar.
+
+<span class="gu">## 5. Exemplos</span>
+
+Apresente exemplos práticos.
+
+<span class="gu">## 6. Problemas comuns</span>
+
+Liste problemas e suas soluções.
+
+<span class="gu">## 7. Referências</span>
+
+Links e materiais complementares.
+</code></pre></div>
+<p>Essa estrutura não é obrigatória. O mais importante é que o conteúdo seja <strong>claro, organizado e fácil de consultar</strong>.</p>
+<hr />
+<h2 id="15-o-que-nao-fazer">15. O que não fazer</h2>
+<h3 id="nao-editar-a-gh-pages">Não editar a <code>gh-pages</code></h3>
+<p>A documentação deve ser alterada na <code>master</code>.</p>
+<p>Não faça:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>gh-pages
+</code></pre></div>
+<p>para editar documentos.</p>
+<hr />
+<h3 id="nao-fazer-merge-manual-com-gh-pages">Não fazer merge manual com <code>gh-pages</code></h3>
+<p>Não faça:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>switch<span class="w"> </span>gh-pages
+git<span class="w"> </span>merge<span class="w"> </span>master
+</code></pre></div>
+<p>A publicação deve ser feita pelo MkDocs:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<hr />
+<h3 id="nao-editar-arquivos-dentro-de-site">Não editar arquivos dentro de <code>site/</code></h3>
+<p>Arquivos como:</p>
+<div class="highlight"><pre><span></span><code>site/index.html
+site/assets/
+site/search/
+</code></pre></div>
+<p>são gerados automaticamente.</p>
+<p>Altere o arquivo Markdown correspondente dentro de <code>docs/</code>.</p>
+<hr />
+<h3 id="nao-publicar-sem-testar">Não publicar sem testar</h3>
+<p>Antes de publicar:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>gh-deploy
+</code></pre></div>
+<p>teste:</p>
+<div class="highlight"><pre><span></span><code>mkdocs<span class="w"> </span>serve
+</code></pre></div>
+<hr />
+<h2 id="16-documentacao-como-conhecimento-da-empresa">16. Documentação como conhecimento da empresa</h2>
+<p>A documentação do <code>pi-lib</code> deve funcionar como uma <strong>base de conhecimento da PI Junior</strong>.</p>
+<p>Sempre que possível, documente:</p>
+<ul>
+<li>processos técnicos;</li>
+<li>ferramentas utilizadas;</li>
+<li>padrões de desenvolvimento;</li>
+<li>procedimentos de configuração;</li>
+<li>soluções para problemas recorrentes;</li>
+<li>decisões importantes;</li>
+<li>tutoriais;</li>
+<li>conhecimentos necessários para novos membros.</li>
+</ul>
+<p>O objetivo é evitar que informações importantes fiquem restritas a uma única pessoa.</p>
+<p>Uma boa documentação deve permitir que outro membro consiga entender e executar uma tarefa sem depender diretamente de quem realizou o trabalho anteriormente.</p>
+<hr />
+<p><em>Documentação mantida pela Diretoria de Projetos/TI.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

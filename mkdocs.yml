@@ -20,9 +20,13 @@ markdown_extensions:
 
 extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
-
+extra_css:
+  - stylesheets/extra.css
+  
 nav:
   - Início: index.md
   - Ferramentas:
       - Git e GitHub: tools/git-github.md
       - MkDocs: tools/docs.md
+  - Projetos Conceito:
+      - ChatBots - Pi-Importadora: poc/piimportadora.md
