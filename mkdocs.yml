@@ -15,5 +15,5 @@ theme:
 nav:
   - Início: index.md
   - Ferramentas:
-    - Git e GitHub: git-github.md
-    - TESTE: teste.md
+    - Git e GitHub: tools/git-github.md
+    - Mkdocs: tools/docs.md 
