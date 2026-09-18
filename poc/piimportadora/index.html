@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#chatbot-piimportadora" class="md-skip">
+        <a href="#chatbot-pi-importadora" class="md-skip">
           Skip to content
         </a>
       
@@ -803,7 +803,7 @@
 
 
 
-<h1 id="chatbot-piimportadora">ChatBot: PiImportadora</h1>
+<h1 id="chatbot-pi-importadora">ChatBot: Pi-Importadora</h1>
 <p>Sistema B2B de atendimento automatizado via WhatsApp integrado à inteligência artificial (DeepSeek) para classificação de intenções, recomendação de produtos e gerenciamento da jornada de compras em tempo real.</p>
 <hr />
 <h2 id="1-introducao">1. Introdução</h2>
@@ -819,22 +819,19 @@
 </ul>
 <h2 id="3-configuracao">3. Configuração</h2>
 <ol>
-<li>
-<p><strong>Variáveis de Ambiente</strong>: Na raiz do seu projeto, crie o arquivo <code>.env</code> para abrigar as credenciais críticas e a URL do banco:
-   ```env
-   DEEPSEEK_API_KEY="sk-sua-chave-aqui"
-   TWILIO_ACCOUNT_SID="AC-seu-sid"
-   TWILIO_AUTH_TOKEN="seu-token"
-   TWILIO_NUMBER="whatsapp:+14155238886"
-   # DATABASE_URL="sqlite+aiosqlite:///./test.db" (Padrão no código)</p>
-<p>```</p>
-</li>
-<li>
-<p><strong>Expondo a Porta para Testes com ngrok</strong>:
+<li><strong>Variáveis de Ambiente</strong>: Na raiz do seu projeto, crie o arquivo <code>.env</code> para abrigar as credenciais críticas e a URL do banco:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nv">DEEPSEEK_API_KEY</span><span class="o">=</span><span class="s2">"sk-sua-chave-aqui"</span>
+<span class="w">   </span><span class="nv">TWILIO_ACCOUNT_SID</span><span class="o">=</span><span class="s2">"AC-seu-sid"</span>
+<span class="w">   </span><span class="nv">TWILIO_AUTH_TOKEN</span><span class="o">=</span><span class="s2">"seu-token"</span>
+<span class="w">   </span><span class="nv">TWILIO_NUMBER</span><span class="o">=</span><span class="s2">"whatsapp:+9999999999"</span>
+<span class="w">   </span><span class="c1"># DATABASE_URL="sqlite+aiosqlite:///./test.db" (Padrão no código)</span>
+</code></pre></div>
+<ol>
+<li><strong>Expondo a Porta para Testes com ngrok</strong>:
 O Twilio necessita de uma URL pública para bater com o Payload da mensagem. Execute o ngrok na mesma porta do servidor Uvicorn:
 <div class="highlight"><pre><span></span><code>ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8000</span>
-</code></pre></div></p>
-</li>
+</code></pre></div></li>
 </ol>
 <p>Copie a URL <code>https</code> retornada pelo ngrok e adicione ao campo de Webhook do seu número no painel do Twilio, apontando para a rota criada: <code>https://&lt;url-do-ngrok&gt;.ngrok-free.app/whatsapp</code>.
 3. <strong>Iniciando o Bot</strong>:
