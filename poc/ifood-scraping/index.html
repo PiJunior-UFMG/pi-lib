@@ -1,0 +1,1179 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da piJunior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="../piimportadora/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Extração iFood & Mitmproxy - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#extracao-e-processamento-de-dados-do-ifood" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Extração iFood & Mitmproxy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/git-github/" class="md-tabs__link">
+          
+  
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../piimportadora/" class="md-tabs__link">
+          
+  
+  
+  Projetos Conceito
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projetos Conceito
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projetos Conceito
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../piimportadora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatBots - Pi-Importadora
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extração iFood & Mitmproxy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extração iFood & Mitmproxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estruturação e Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacao-do-interceptador-mitmproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicialização do Interceptador (mitmproxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao-dos-bookmarklets-de-coleta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração dos Bookmarklets de Coleta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-do-motor-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup do Motor ETL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametrizacao-da-inteligencia-artificial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametrização da Inteligência Artificial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Casos de Uso e Exemplos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interceptacao-automatica-de-respostas-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interceptação Automática de Respostas da API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-script-javascript-minimizado-para-bookmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo de Script JavaScript Minimizado para Bookmark
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-arquitetural-para-ia-de-nutricao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt Arquitetural para IA de Nutrição
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estruturação e Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacao-do-interceptador-mitmproxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicialização do Interceptador (mitmproxy)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuracao-dos-bookmarklets-de-coleta" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuração dos Bookmarklets de Coleta
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-do-motor-etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup do Motor ETL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametrizacao-da-inteligencia-artificial" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parametrização da Inteligência Artificial
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Casos de Uso e Exemplos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interceptacao-automatica-de-respostas-da-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interceptação Automática de Respostas da API
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-de-script-javascript-minimizado-para-bookmark" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo de Script JavaScript Minimizado para Bookmark
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prompt-arquitetural-para-ia-de-nutricao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prompt Arquitetural para IA de Nutrição
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="extracao-e-processamento-de-dados-do-ifood">Extração e Processamento de Dados do iFood</h1>
+<p>Este documento estabelece o padrão arquitetural e operacional para o pipeline de extração de dados da plataforma iFood, com foco na técnica híbrida de interceptação de tráfego (via <code>mitmproxy</code>), seguida pelas etapas de extração, transformação e carga (ETL) e enriquecimento semântico utilizando Inteligência Artificial (DeepSeek).</p>
+<p>O sistema resolve o problema das severas limitações antibot (como PerimeterX e Cloudflare) ao utilizar o tráfego orgânico do navegador do usuário para capturar catálogos e informações de lojas dinamicamente, processando e classificando os dados nutricionais em escala para análises posteriores.</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>O pipeline de dados é composto por três componentes centrais: captura de tráfego, limpeza e transformação (ETL), e classificação inteligente. A interceptação ocorre localmente utilizando o <code>mitmproxy</code> integrado a um navegador com roteamento configurado. Os payloads interceptados das rotas GraphQL e REST do iFood são salvos em formato JSON. Em seguida, regras de negócio purificam o dataset (removendo anomalias e categorias indesejadas) antes que uma LLM realize a decomposição estruturada de marmitas e pratos da culinária brasileira.</p>
+<pre class="mermaid"><code>flowchart TD
+    A[Navegador do Usuário] --&gt;|Requisições HTTP/HTTPS| B(Proxy Mitmproxy)
+    B --&gt;|Encaminha tráfego| C[Servidores iFood]
+    C --&gt;|Respostas JSON| B
+    B --&gt;|coleta_mitm.py| D[(Arquivos JSON Brutos)]
+    D --&gt;|filter_json.py| E[Limpeza e ETL CSV]
+    E --&gt;|processador_ia.py| F[Classificação via API DeepSeek]
+    F --&gt; G[(Dataset Enriquecido Final)]
+</code></pre>
+<h2 id="2-pre-requisitos-e-contexto">2. Pré-requisitos e Contexto</h2>
+<p>Para executar e gerenciar a esteira completa, os seguintes requisitos sistêmicos e organizacionais devem ser atendidos:</p>
+<p><strong>Ambiente e Rede:</strong></p>
+<ul>
+<li>Navegador web configurado com extensão de gerenciamento de proxy (ex: FoxyProxy Standard) apontando para <code>127.0.0.1:8080</code>.</li>
+<li>Instalação do certificado de autoridade raiz do <code>mitmproxy</code> no navegador (<code>mitm.it</code>) para descriptografia de tráfego HTTPS.</li>
+</ul>
+<p><strong>Dependências de Software:</strong></p>
+<ul>
+<li>Python 3.9+.</li>
+<li>Pacotes: <code>mitmproxy</code>, <code>openai</code>, <code>playwright</code>.</li>
+</ul>
+<p><strong>Credenciais e Variáveis de Ambiente:</strong></p>
+<ul>
+<li><code>&lt;CHAVE_API_DEEPSEEK&gt;</code> configurada para a etapa de classificação semântica.</li>
+</ul>
+<p><strong>Organização de Diretórios:</strong></p>
+<ul>
+<li>Estrutura de pastas de saída parametrizada (ex: diretório <code>./output</code> e diretórios com nomes de regiões <code>sudeste</code>, <code>nordeste</code>).</li>
+</ul>
+<h2 id="3-estruturacao-e-setup">3. Estruturação e Setup</h2>
+<p>A configuração inicial abrange a subida do servidor proxy local, a injeção dos scripts utilitários e a parametrização do ambiente de banco de dados e arquivos.</p>
+<h3 id="inicializacao-do-interceptador-mitmproxy">Inicialização do Interceptador (mitmproxy)</h3>
+<p>O módulo <code>coleta_mitm.py</code> atua como um addon para o <code>mitmproxy</code>. Ele deve ser iniciado no terminal sob protocolo HTTP/1.1 para contornar problemas de multiplexação e parsing de cabeçalhos complexos do HTTP/2.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Iniciar a escuta do tráfego forçando o protocolo HTTP/1.1</span>
+mitmdump<span class="w"> </span>-s<span class="w"> </span>src/coleta_mitm.py<span class="w"> </span>--set<span class="w"> </span><span class="nv">http2</span><span class="o">=</span><span class="nb">false</span><span class="w"> </span>-q
+</code></pre></div>
+<h3 id="configuracao-dos-bookmarklets-de-coleta">Configuração dos Bookmarklets de Coleta</h3>
+<p>Configuração dos Bookmarklets de ColetaPara dinamizar a extração diretamente pelo navegador, os scripts JavaScript de automação foram otimizados e minimizados para uso em bookmarks. O operador deve copiar o código minimizado de um arquivo de script e salvá-lo como o URL de um favorito no navegador, iniciando com o prefixo javascript:</p>
+<ul>
+<li><strong>Script de Varredura e Disparo de Catálogo (fetch_ifood_api.js):</strong> Injeta requisições sequenciais contornando restrições de coordenadas logísticas e coletando dados de lojistas mapeados na tela.   </li>
+<li><strong>Script de Abertura Sincronizada (open_restaurant_page.js):</strong> Abre abas controladas de restaurantes e valida o status de salvamento iterativo comunicando-se com rotas locais do Python.</li>
+</ul>
+<h3 id="setup-do-motor-etl">Setup do Motor ETL</h3>
+<p>O script <code>filter_json.py</code> requer uma estrutura de diretórios baseada em regiões geográficas ou estados para processamento em lote.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># O sistema espera que exista uma pasta contendo subpastas por estado</span>
+python<span class="w"> </span>filter_json.py<span class="w"> </span>&lt;NOME_DA_REGIAO_OU_PASTA&gt;
+</code></pre></div>
+<h3 id="parametrizacao-da-inteligencia-artificial">Parametrização da Inteligência Artificial</h3>
+<p>Para o <code>processador_ia.py</code>, é necessário um arquivo de texto com as definições de domínio (ex: <code>alimentos_definicoes.txt</code>) e a injeção da chave de API no código ou via variável de ambiente.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># processador_ia.py - Estrutura de configuração</span>
+<span class="n">CHAVE_API</span> <span class="o">=</span> <span class="s2">"&lt;SUA_CHAVE_AQUI&gt;"</span>
+<span class="n">MODELO</span> <span class="o">=</span> <span class="s2">"deepseek-chat"</span>
+<span class="n">TAMANHO_LOTE_CHECKPOINT</span> <span class="o">=</span> <span class="mi">500</span>
+</code></pre></div>
+<h2 id="4-aplicacao-pratica">4. Aplicação Prática</h2>
+<p>A rotina de execução ocorre em cascata. O fluxo operacional é definido pelos seguintes passos diários:</p>
+<ol>
+<li><strong>Ativação da Coleta Híbrida:</strong> O operador inicia o <code>mitmdump</code> via terminal. Com o FoxyProxy ativo, o operador navega pelo site do iFood. O script intercepta automaticamente as rotas <code>/catalog</code> e <code>site-api/v1/merchant-info/graphql</code>, salvando os JSONs em <code>./output</code>.</li>
+<li><strong>Execução via Bookmarklet:</strong> O operador navega até a página de listagem de restaurantes do iFood e clica no favorito configurado com o script minimizado. O script extrai os IDs dinâmicos de entrega e dispara as requisições controladas de catálogo para captura em segundo plano.</li>
+<li><strong>Persistência de Dados:</strong> O addon processa os headers e payloads interceptados das rotas de catálogo e GraphQL, gravando arquivos JSON estruturados no diretório de saída.</li>
+<li><strong>ETL e Enriquecimento:</strong> Executam-se os scripts de conversão e limpeza (<code>filter_json.py</code>) para remoção de ruídos e, por fim, o motor de inteligência artificial (<code>processador_ia.py</code>) para categorização estruturada dos pratos.</li>
+</ol>
+<pre class="mermaid"><code>sequenceDiagram
+    participant User as Operador
+    participant BM as Bookmarklet JS
+    participant Proxy as Mitmproxy
+    participant API as iFood API
+    participant ETL as ETL &amp; IA
+
+    User-&gt;&gt;BM: Aciona favorito (bookmarklet) no navegador
+    BM-&gt;&gt;API: Extrai IDs e dispara requisições controladas em fila
+    API--&gt;&gt;Proxy: Retorna rotas de Catálogo e GraphQL (JSON)
+    Proxy-&gt;&gt;Proxy: Intercepta e valida regras de rota
+    Proxy-&gt;&gt;User: Salva &lt;merchant_id&gt;.json na pasta de saída (/output)
+    User-&gt;&gt;ETL: Executa filter_json.py para limpeza e conversão CSV
+    ETL-&gt;&gt;ETL: Executa processador_ia.py para classificação com DeepSeek
+</code></pre>
+<h2 id="5-casos-de-uso-e-exemplos">5. Casos de Uso e Exemplos</h2>
+<h3 id="interceptacao-automatica-de-respostas-da-api">Interceptação Automática de Respostas da API</h3>
+<p>O código abaixo demonstra como a ferramenta isola a requisição do catálogo a partir do tráfego massivo. Se a URL coincidir e o status HTTP for <code>200</code>, o payload é injetado no armazenamento pendente.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Trecho adaptado de coleta_mitm.py</span>
+<span class="k">if</span> <span class="s2">"/catalog"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">and</span> <span class="s2">"site-api/v1/merchants/restaurant"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">flow</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">'/restaurant/([a-f0-9\-]+)/catalog'</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+            <span class="n">restaurante_id</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Aciona método interno de persistência local</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_iniciar_restaurante</span><span class="p">(</span><span class="n">restaurante_id</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dados_pendentes</span><span class="p">[</span><span class="n">restaurante_id</span><span class="p">][</span><span class="s2">"catalogo_loja"</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">flow</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_verificar_e_salvar</span><span class="p">(</span><span class="n">restaurante_id</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="exemplo-de-script-javascript-minimizado-para-bookmark">Exemplo de Script JavaScript Minimizado para Bookmark</h3>
+<p>Abaixo encontra-se a estrutura lógica do script responsável por extrair os identificadores dos restaurantes exibidos na interface e injetar requisições controladas com espaçamento estocástico de tempo para evitar bloqueios de segurança:   JavaScriptjavascript:(async 
+<div class="highlight"><pre><span></span><code><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">elementos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Array</span><span class="p">.</span><span class="kr">from</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'a[href*="/delivery/"]'</span><span class="p">));</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">restaurantes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">idsProcessados</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">();</span>
+
+<span class="w">    </span><span class="nx">elementos</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">el</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">parts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">el</span><span class="p">.</span><span class="nx">href</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">'/'</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">rId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">parts</span><span class="p">[</span><span class="nx">parts</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="s1">'?'</span><span class="p">)[</span><span class="mf">0</span><span class="p">];</span><span class="w"> </span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">rId</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">20</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="o">!</span><span class="nx">idsProcessados</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="nx">rId</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">idsProcessados</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="nx">rId</span><span class="p">);</span>
+<span class="w">            </span><span class="nx">restaurantes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">rId</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">` Mapeados </span><span class="si">${</span><span class="nx">restaurantes</span><span class="p">.</span><span class="nx">length</span><span class="si">}</span><span class="sb"> restaurantes para extração via bookmarklet.`</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div></p>
+<h3 id="prompt-arquitetural-para-ia-de-nutricao">Prompt Arquitetural para IA de Nutrição</h3>
+<p>O módulo <code>processador_ia.py</code> utiliza formatação rigorosa via JSON para forçar a LLM a retornar dados exatos, restringindo alucinações. O prompt exige que a LLM valide a pertinência do prato (se é marmita/comida brasileira) e extraia os constituintes da refeição.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Saída esperada da LLM após o processamento da descrição de um prato</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">"eh_alimento"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"extracao_texto"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"prato_principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bife Acebolado"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"prato_vegetariano_principal"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"guarnicao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fritas"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"salada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alface e Tomate"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"acompanhamento"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Arroz e Feijão"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"sobremesa"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"bebida"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"outros_carboidratos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Farofa"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"marcadores_x"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"Carne Vermelha"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"Frita"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"Frita (Guarnicao)"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"Arroz branco simples"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"Feijão simples"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="6-desafios-comuns-e-solucoes">6. Desafios Comuns e Soluções</h2>
+<ol>
+<li><strong>Problema: Interrupção por Timeout ou Erro na API do DeepSeek.</strong></li>
+<li>
+<p><em>Solução:</em> O sistema foi desenhado com um mecanismo nativo de checkpoint (<code>TAMANHO_LOTE_CHECKPOINT = 500</code>). Se a execução cair, ao reiniciar apontando para o mesmo arquivo original de saída, o motor ativará o "Modo de Retomada" via função <code>carregar_itens_ja_processados</code>, pulando automaticamente as chaves <code>(Restaurante, Nome do Prato)</code> já concluídas e retomando do ponto exato de falha.</p>
+</li>
+<li>
+<p><strong>Problema: Certificado de Proxy Inválido Bloqueando a Navegação.</strong></p>
+</li>
+<li>
+<p><em>Solução:</em> Navegadores modernos barram tráfego HTTPS descriptografado no meio do caminho (MITM). Certifique-se de que o proxy está ativo (porta 8080), acesse o domínio dentro do navegador configurado e baixe a chave primária. Instale-a nas configurações de "Autoridades de Certificação Raiz Confiáveis" (Trust Root CA) do seu navegador ou sistema operacional.</p>
+</li>
+<li>
+<p><strong>Problema: Arquivos JSON não sendo gerados, mesmo com tráfego capturado.</strong></p>
+</li>
+<li><em>Solução:</em> O addon <code>coleta_mitm.py</code> requer a captura de dois componentes antes de consolidar o arquivo: os <em>metadados do restaurante</em> (GraphQL) e o <em>catálogo</em> (REST). Se a navegação não forçar o carregamento de ambos, o ID permanecerá no dicionário <code>self.dados_pendentes</code>. Pressione <code>F5</code> na página do restaurante afetado para re-disparar as requisições primárias.</li>
+</ol>
+<h2 id="7-referencias">7. Referências</h2>
+<ul>
+<li><a href="https://www.google.com/search?q=https://docs.mitmproxy.org/stable/&amp;utm_source=gemini">Documentação Oficial Mitmproxy</a></li>
+<li><a href="https://www.google.com/search?q=https://platform.deepseek.com/api-docs/&amp;utm_source=gemini">DeepSeek API Reference</a></li>
+<li><a href="https://github.com/PiJunior-UFMG/Projeto_Ifood/blob/main/src/coleta_mitm.py">Repositório Interno - coleta_mitm.py</a></li>
+<li><a href="https://github.com/PiJunior-UFMG/Projeto_Ifood/blob/main/scripts/filter_json.py">Repositório Interno - filter_json.py</a></li>
+<li><a href="https://github.com/PiJunior-UFMG/Projeto_Ifood/blob/main/scripts/processador_ia.py">Repositório Interno - processador_ia.py</a></li>
+<li><a href="https://www.toptal.com/developers/javascript-minifier?utm_source=gemini">Minificador de JavaScript para Bookmarklets: Toptal JS Minifier</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
