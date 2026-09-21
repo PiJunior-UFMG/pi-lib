@@ -30,3 +30,4 @@ nav:
       - MkDocs: tools/docs.md
   - Projetos Conceito:
       - ChatBots - Pi-Importadora: poc/piimportadora.md
+      - Extração iFood & Mitmproxy: poc/ifood-scraping.md

@@ -1,0 +1,10 @@
+.mermaid {
+    overflow-x: auto; /* Adiciona scroll horizontal se o diagrama for maior que a tela */
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.mermaid svg {
+    max-width: none !important; /* Impede o MkDocs de espremer o gráfico */
+    min-width: 900px; /* Garante uma largura mínima confortável para leitura */
+}

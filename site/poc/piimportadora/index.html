@@ -1,0 +1,946 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da piJunior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="../../tools/docs/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>ChatBots - Pi-Importadora - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chatbot-piimportadora" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ChatBots - Pi-Importadora
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tools/git-github/" class="md-tabs__link">
+          
+  
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Projetos Conceito
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tools/docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projetos Conceito
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projetos Conceito
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatBots - Pi-Importadora
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatBots - Pi-Importadora
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arquitetura-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Arquitetura do projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arquitetura do projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interacoes-do-orquestrador-e-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interações do Orquestrador e Agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-dashboard-de-configuracao-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Dashboard de Configuração (/dashboard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decisoes-de-tecnologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisões de Tecnologia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-como-podemos-reutilizar-este-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Como podemos reutilizar este código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-configuracao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Configuração
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arquitetura-do-projeto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Arquitetura do projeto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arquitetura do projeto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interacoes-do-orquestrador-e-agentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interações do Orquestrador e Agentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#o-dashboard-de-configuracao-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        O Dashboard de Configuração (/dashboard)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decisoes-de-tecnologia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decisões de Tecnologia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-como-podemos-reutilizar-este-codigo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Como podemos reutilizar este código
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chatbot-piimportadora">ChatBot: PiImportadora</h1>
+<p>Sistema B2B de atendimento automatizado via WhatsApp integrado à inteligência artificial (DeepSeek) para classificação de intenções, recomendação de produtos e gerenciamento da jornada de compras em tempo real.</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>O projeto consiste em um assistente de vendas em formato de prova de conceito (PoC). O objetivo é demonstrar a viabilidade de um fluxo conversacional assíncrono e integrado a dados, onde a IA orquestra o diálogo baseando-se no histórico de consumo do cliente e no catálogo do banco de dados. A aplicação backend foi construída para alta performance de I/O, utilizando FastAPI e SQLAlchemy assíncrono, garantindo uma resposta rápida às requisições provenientes da API do WhatsApp.</p>
+<h2 id="2-pre-requisitos">2. Pré-requisitos</h2>
+<p>Para que o ambiente de desenvolvimento seja configurado adequadamente, é necessário possuir:</p>
+<ul>
+<li><strong>Python 3.10+</strong>: Linguagem base do projeto.</li>
+<li><strong>API do Twilio</strong>: Conta ativa com credenciais configuradas (<code>ACCOUNT_SID</code> e <code>AUTH_TOKEN</code>), além de um número de testes no Twilio Sandbox for WhatsApp.</li>
+<li><strong>API do DeepSeek</strong>: Chave de acesso (<code>DEEPSEEK_API_KEY</code>) para chamadas ao modelo <code>deepseek-chat</code>.</li>
+<li><strong>ngrok</strong>: Ferramenta indispensável em ambiente local para expor a porta da aplicação (localhost) em um endpoint público seguro (HTTPS), necessário para configurar o webhook de recebimento do Twilio.</li>
+<li><strong>Banco de Dados</strong>: SQLite habilitado (padrão) com driver assíncrono (<code>aiosqlite</code>) ou PostgreSQL local.</li>
+</ul>
+<h2 id="3-configuracao">3. Configuração</h2>
+<ol>
+<li>
+<p><strong>Variáveis de Ambiente</strong>: Na raiz do seu projeto, crie o arquivo <code>.env</code> para abrigar as credenciais críticas e a URL do banco:
+   ```env
+   DEEPSEEK_API_KEY="sk-sua-chave-aqui"
+   TWILIO_ACCOUNT_SID="AC-seu-sid"
+   TWILIO_AUTH_TOKEN="seu-token"
+   TWILIO_NUMBER="whatsapp:+14155238886"
+   # DATABASE_URL="sqlite+aiosqlite:///./test.db" (Padrão no código)</p>
+<p>```</p>
+</li>
+<li>
+<p><strong>Expondo a Porta para Testes com ngrok</strong>:
+O Twilio necessita de uma URL pública para bater com o Payload da mensagem. Execute o ngrok na mesma porta do servidor Uvicorn:
+<div class="highlight"><pre><span></span><code>ngrok<span class="w"> </span>http<span class="w"> </span><span class="m">8000</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p>Copie a URL <code>https</code> retornada pelo ngrok e adicione ao campo de Webhook do seu número no painel do Twilio, apontando para a rota criada: <code>https://&lt;url-do-ngrok&gt;.ngrok-free.app/whatsapp</code>.
+3. <strong>Iniciando o Bot</strong>:
+Com tudo configurado, rode a aplicação para gerar as tabelas e subir o servidor simultaneamente:
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py<span class="w"> </span>--create-db<span class="w"> </span>--run-server
+</code></pre></div></p>
+<h2 id="4-arquitetura-do-projeto">4. Arquitetura do projeto</h2>
+<p>A arquitetura orientada a eventos funciona desmembrando a resposta imediata de recebimento do processamento pesado da IA.</p>
+<h3 id="interacoes-do-orquestrador-e-agentes">Interações do Orquestrador e Agentes</h3>
+<p>A arquitetura orientada a eventos desmembra a resposta imediata (para evitar timeouts no Twilio) do processamento pesado da IA. O diagrama abaixo ilustra de forma simplificada como os componentes interagem desde o recebimento da mensagem até a resposta final.</p>
+<pre class="mermaid"><code>flowchart TD
+    Cliente((CLIENTE)) -- "1. Envia mensagem" --&gt; Twilio
+    Twilio -- "2. POST /whatsapp" --&gt; Webhook[" Webhook&lt;br&gt;(whatsapp.py)"]
+
+    Webhook -- "3. Responde rápido&lt;br&gt;(Evita timeout)" --&gt; Twilio
+    Webhook -- "4. Delega processo&lt;br&gt;(Background Task)" --&gt; Orquestrador[" manage_agent&lt;br&gt;(Orquestrador)"]
+
+    Orquestrador -- "Aciona agentes" --&gt; Agentes[" agents.py&lt;br&gt;(Interação IA)"]
+    Agentes -. "Lê prompts" .-&gt; TXT["Arquivos .txt&lt;br&gt;(message_context,&lt;br&gt;extract_tags, etc)"]
+
+    Orquestrador -- "Consulta/Atualiza" --&gt; BD[(" Banco de Dados&lt;br&gt;(ORM)")]
+
+    Orquestrador -- "5. Envia resposta&lt;br&gt;inteligente" --&gt; Twilio
+    Twilio -- "6. Entrega msg" --&gt; Cliente</code></pre>
+<h3 id="o-dashboard-de-configuracao-dashboard">O Dashboard de Configuração (/dashboard)</h3>
+<p>A página administrativa <code>dashboard.py</code> foi renderizada de forma SSR (Server-Side Rendering) via <code>Jinja2Templates</code> e tem dois papéis centrais:</p>
+<ul>
+<li><strong>Gestão Operacional Dinâmica</strong>: Dispõe formulários de POST (ex: <code>/supplier/add</code>, <code>/product/{id}/edit</code>) permitindo que administradores criem ou atualizem as tags de Fornecedores e Produtos instantaneamente. Isso altera dinamicamente como a IA sugere os itens.</li>
+<li><strong>Auditoria de IA e Conversão</strong>: Apresenta a relação consolidada de compras atreladas aos Clientes, além das métricas essenciais como o consumo médio e total de Tokens dos agentes (via leitura assíncrona do <code>agent_metrics.log</code>), garantindo visibilidade dos custos.</li>
+</ul>
+<h3 id="decisoes-de-tecnologia">Decisões de Tecnologia</h3>
+<ul>
+<li><strong>SQLAlchemy (ORM 2.0)</strong>: Escolhido pela tipagem avançada e operação assíncrona robusta. Implementamos <strong>herança polimórfica</strong> na tabela <code>User</code> que se divide em <code>Client</code> e <code>Seller</code>, economizando queries e isolando regras de negócio em um único local, o que escala super bem para adicionar novos perfis.</li>
+<li><strong>Cache Volátil em Memória (<code>user_cache</code>)</strong>: Utilizou-se um simples dicionário para rastrear os "steps" temporários e as listas de sugestões no meio de uma transação. Isso agiliza o PoC, reduz o I/O em banco de dados, mas não garante persistência ao resetar o servidor.</li>
+</ul>
+<h2 id="5-como-podemos-reutilizar-este-codigo">5. Como podemos reutilizar este código</h2>
+<p>Sendo um Projeto Conceito (PoC), a arquitetura <code>Webhook -&gt; BackgroundTask -&gt; Agentes_IA</code> pode ser reaproveitada para inúmeros setores:</p>
+<ul>
+<li><strong>Adaptação para Serviços/Agendamentos</strong>: Basta alterar o <code>models.py</code> substituindo as classes de <code>Supplier</code> e <code>Product</code> por <code>Doctor</code> e <code>Schedule</code>.</li>
+<li><strong>Mudança da Personalidade do Bot</strong>: Toda a percepção e limite de comportamento do bot residem na pasta <code>/prompts</code>. Editar o texto do <code>message_context.txt</code> e <code>recommend_products.txt</code> mudará o nicho rapidamente de Vendas para Suporte Técnico, sem a necessidade de reescrever lógica Python.</li>
+<li><strong>Migração do Cache (Prioridade Alta)</strong>: Para escalar em produção multi-workers, você pode começar substituindo o dicionário <code>user_cache</code> em <code>whatsapp.py</code> por conexões Redis. O esqueleto lógico do estado de sessão continuará o mesmo.</li>
+</ul>
+<h2 id="6-referencias">6. Referências</h2>
+<ul>
+<li><a href="https://fastapi.tiangolo.com/async/">FastAPI Async Documentation</a></li>
+<li><a href="https://www.google.com/search?q=https://www.twilio.com/docs/usage/webhooks/whatsapp-webhooks">Twilio Webhooks &amp; TwiML</a></li>
+<li><a href="https://platform.deepseek.com/api-docs">DeepSeek API References</a></li>
+<li><a href="https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html">SQLAlchemy Asyncio ORM</a></li>
+<li><a href="https://ngrok.com/docs">Ngrok - Expondo serviços locais</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>

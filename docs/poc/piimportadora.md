@@ -1,4 +1,4 @@
-# ChatBot: PiImportadora
+# ChatBot: Pi-Importadora
 
 Sistema B2B de atendimento automatizado via WhatsApp integrado à inteligência artificial (DeepSeek) para classificação de intenções, recomendação de produtos e gerenciamento da jornada de compras em tempo real.
 
@@ -21,14 +21,14 @@ Para que o ambiente de desenvolvimento seja configurado adequadamente, é necess
 ## 3. Configuração
 
 1. **Variáveis de Ambiente**: Na raiz do seu projeto, crie o arquivo `.env` para abrigar as credenciais críticas e a URL do banco:
-   ```env
+  
+```bash
    DEEPSEEK_API_KEY="sk-sua-chave-aqui"
    TWILIO_ACCOUNT_SID="AC-seu-sid"
    TWILIO_AUTH_TOKEN="seu-token"
-   TWILIO_NUMBER="whatsapp:+14155238886"
+   TWILIO_NUMBER="whatsapp:+9999999999"
    # DATABASE_URL="sqlite+aiosqlite:///./test.db" (Padrão no código)
-
-    ```
+```
 
 2. **Expondo a Porta para Testes com ngrok**:
 O Twilio necessita de uma URL pública para bater com o Payload da mensagem. Execute o ngrok na mesma porta do servidor Uvicorn:
@@ -94,7 +94,7 @@ Sendo um Projeto Conceito (PoC), a arquitetura `Webhook -> BackgroundTask -> Age
 * **Migração do Cache (Prioridade Alta)**: Para escalar em produção multi-workers, você pode começar substituindo o dicionário `user_cache` em `whatsapp.py` por conexões Redis. O esqueleto lógico do estado de sessão continuará o mesmo.
 
 ## 6. Referências
-
+* [Repositório Interno](https://github.com/PiJunior-UFMG/POC_PI-importadora)
 * [FastAPI Async Documentation](https://fastapi.tiangolo.com/async/)
 * [Twilio Webhooks & TwiML](https://www.google.com/search?q=https://www.twilio.com/docs/usage/webhooks/whatsapp-webhooks)
 * [DeepSeek API References](https://platform.deepseek.com/api-docs)
