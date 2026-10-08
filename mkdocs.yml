@@ -28,6 +28,8 @@ nav:
   - Ferramentas:
       - Git e GitHub: tools/git-github.md
       - MkDocs: tools/docs.md
+      - Docker: tools/docker.md
+      - Chrome DevTools: tools/devtools.md
   - Projetos Conceito:
       - ChatBots - Pi-Importadora: poc/piimportadora.md
       - Extração iFood & Mitmproxy: poc/ifood-scraping.md
