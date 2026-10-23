@@ -1,0 +1,1572 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da piJunior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="../docs/">
+      
+      
+        <link rel="next" href="../devtools/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Docker - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#docker" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Docker
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../git-github/" class="md-tabs__link">
+          
+  
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../poc/piimportadora/" class="md-tabs__link">
+          
+  
+  
+  Projetos Conceito
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pré-requisitos e Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infraestrutura-e-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infraestrutura e Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acessos-e-permissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acessos e Permissões
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conhecimento-previo-necessario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conhecimento Prévio Necessário
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativo-maquina-virtual-vs-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativo: Máquina Virtual vs. Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estruturação e Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-validacao-da-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Validação da Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-criacao-do-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: Criação do Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caminho-de-estudo-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caminho de estudo recomendado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Aplicação Prática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-essenciais-de-gestao-diaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Essenciais de Gestão Diária
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Casos de Uso e Exemplos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-1-ambiente-de-testes-limpo-com-ubuntu-interativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 1: Ambiente de testes limpo com Ubuntu interativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-2-execucao-de-um-banco-de-dados-temporario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 2: Execução de um banco de dados temporário
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-3-envio-da-imagem-para-um-registry-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 3: Envio da imagem para um Registry (Docker Hub)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Desafios Comuns e Soluções">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-1-o-container-inicia-e-para-morre-imediatamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1: O Container inicia e para (morre) imediatamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-2-erro-permission-denied-ao-executar-comandos-do-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2: Erro "Permission denied" ao executar comandos do Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-3-erro-port-is-already-allocated-ou-address-already-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3: Erro "Port is already allocated" ou "Address already in use"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-glossario-de-termos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Glossário de Termos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-referencias-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Referências Principais
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devtools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrome DevTools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projetos Conceito
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projetos Conceito
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../poc/piimportadora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatBots - Pi-Importadora
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../poc/ifood-scraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extração iFood & Mitmproxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pré-requisitos e Contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infraestrutura-e-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infraestrutura e Software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acessos-e-permissoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acessos e Permissões
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conhecimento-previo-necessario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conhecimento Prévio Necessário
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparativo-maquina-virtual-vs-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparativo: Máquina Virtual vs. Container
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Estruturação e Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passo-1-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 1: Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-2-validacao-da-instalacao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 2: Validação da Instalação
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passo-3-criacao-do-dockerfile" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Passo 3: Criação do Dockerfile
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caminho-de-estudo-recomendado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caminho de estudo recomendado
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Aplicação Prática">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comandos-essenciais-de-gestao-diaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comandos Essenciais de Gestão Diária
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Casos de Uso e Exemplos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-1-ambiente-de-testes-limpo-com-ubuntu-interativo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 1: Ambiente de testes limpo com Ubuntu interativo
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-2-execucao-de-um-banco-de-dados-temporario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 2: Execução de um banco de dados temporário
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemplo-3-envio-da-imagem-para-um-registry-docker-hub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemplo 3: Envio da imagem para um Registry (Docker Hub)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Desafios Comuns e Soluções">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#problema-1-o-container-inicia-e-para-morre-imediatamente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 1: O Container inicia e para (morre) imediatamente
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-2-erro-permission-denied-ao-executar-comandos-do-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 2: Erro "Permission denied" ao executar comandos do Docker
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#problema-3-erro-port-is-already-allocated-ou-address-already-in-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Problema 3: Erro "Port is already allocated" ou "Address already in use"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-glossario-de-termos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Glossário de Termos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-referencias-principais" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Referências Principais
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="docker">Docker</h1>
+<p>O Docker é uma plataforma de virtualização de nível de sistema
+operacional projetada para criar, implantar e gerenciar aplicações
+dentro de ambientes isolados conhecidos como containers. Seu principal
+objetivo é resolver o clássico problema de inconsistência entre
+ambientes ("funciona na minha máquina"), garantindo que uma aplicação
+rode da mesma forma no ambiente de desenvolvimento, teste e produção.</p>
+<p>Diferente das máquinas virtuais (VMs) tradicionais, que exigem a
+emulação de um sistema operacional completo para cada aplicação, os
+containers Docker compartilham o kernel do sistema operacional
+hospedeiro. Isso torna o processo de virtualização muito mais leve,
+rápido e eficiente em termos de consumo de recursos de infraestrutura.</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>Para compreender o Docker de forma estruturada, é necessário dominar
+seus componentes fundamentais. A arquitetura baseia-se em um modelo
+cliente-servidor onde o Docker Engine atua como o núcleo, gerenciando a
+construção e execução dos containers.</p>
+<p>Os pilares da tecnologia incluem:</p>
+<ul>
+<li><strong>Imagem:</strong> Um pacote estático e de leitura (<em>read-only</em>) que contém
+    o código-fonte, bibliotecas, dependências e ferramentas necessárias
+    para a aplicação funcionar. Funciona como um "molde" ou fotografia
+    do ambiente.</li>
+<li><strong>Container:</strong> A instância em execução de uma imagem. É o ambiente
+    isolado onde o processo da aplicação efetivamente ocorre. Múltiplos
+    containers podem ser gerados a partir de uma única imagem. Uma regra
+    importante: um container só continua ativo enquanto existir um
+    processo rodando dentro dele; quando o processo termina, o container
+    para.</li>
+<li><strong>Dockerfile:</strong> Um arquivo de texto puro contendo a "receita"
+    (instruções passo a passo) para automatizar a criação de uma imagem.</li>
+<li><strong>Registry:</strong> Um repositório centralizado de imagens (ex.: Docker
+    Hub). Permite o armazenamento e o compartilhamento de imagens
+    prontas com a equipe ou comunidade.</li>
+<li><strong>Docker Engine:</strong> Parte do Docker que executa e gerencia os
+    containers.</li>
+<li><strong>Docker Desktop:</strong> Aplicativo com interface gráfica que já inclui o
+    Docker Engine. Útil principalmente no Windows (integrado via WSL 2)
+    e no macOS.</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    A[Cliente Docker / CLI] --&gt;|Comunica via API| B(Docker Engine / Daemon)
+    B --&gt;|Baixa imagens| C[(Docker Registry / Hub)]
+    B --&gt;|Constrói| D[Imagens]
+    D --&gt;|Instancia| E[Containers]
+    E --&gt;|Executa| F[Processos da Aplicação]</code></pre>
+<hr />
+<h2 id="2-pre-requisitos-e-contexto">2. Pré-requisitos e Contexto</h2>
+<p>Antes de iniciar a estruturação de um ambiente Dockerizado, os seguintes
+requisitos e conhecimentos devem estar estabelecidos:</p>
+<h3 id="infraestrutura-e-software">Infraestrutura e Software</h3>
+<ul>
+<li>Docker Engine instalado na máquina hospedeira (recomenda-se a
+    utilização nativa via terminal para servidores Linux, ou Docker
+    Desktop para Windows via WSL 2 e macOS).</li>
+<li>Acesso ao terminal do sistema operacional (Bash, PowerShell ou Zsh).</li>
+</ul>
+<h3 id="acessos-e-permissoes">Acessos e Permissões</h3>
+<ul>
+<li>Privilégios de administrador (<code>root</code> ou <code>sudo</code>) na máquina para
+    execução inicial e configuração de grupos de usuário.</li>
+<li>Conta ativa em um Registry de imagens, como o Docker Hub, para
+    versionamento e armazenamento em nuvem.</li>
+</ul>
+<h3 id="conhecimento-previo-necessario">Conhecimento Prévio Necessário</h3>
+<ul>
+<li>Noções básicas de navegação e manipulação de arquivos via linha de
+    comando (CLI).</li>
+<li>Entendimento básico sobre o funcionamento de redes e portas em
+    sistemas operacionais.</li>
+</ul>
+<h3 id="comparativo-maquina-virtual-vs-container">Comparativo: Máquina Virtual vs. Container</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Critério</strong></th>
+<th><strong>Máquina Virtual</strong></th>
+<th><strong>Container</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sistema Operacional</strong></td>
+<td>Tem um sistema operacional completo próprio</td>
+<td>Usa o sistema operacional da máquina hospedeira</td>
+</tr>
+<tr>
+<td><strong>Peso</strong></td>
+<td>Mais pesada</td>
+<td>Mais leve</td>
+</tr>
+<tr>
+<td><strong>Isolamento</strong></td>
+<td>Total</td>
+<td>Isolado dos outros processos, mas compartilha o kernel do sistema</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-estruturacao-e-setup">3. Estruturação e Setup</h2>
+<p>O processo de implementação inicia-se com a validação do ambiente e a
+posterior criação da primeira "receita" de infraestrutura (o
+Dockerfile).</p>
+<h3 id="passo-1-instalacao">Passo 1: Instalação</h3>
+<p>Existem duas formas de usar o Docker:</p>
+<ul>
+<li>Pelo terminal, instalando apenas o Docker Engine. É a opção
+    recomendada pela documentação oficial para quem pretende usar
+    somente a linha de comando.</li>
+<li>Pelo Docker Desktop, com interface gráfica.</li>
+</ul>
+<p>O guia oficial de instalação está em
+<a href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a>.</p>
+<h3 id="passo-2-validacao-da-instalacao">Passo 2: Validação da Instalação</h3>
+<p>Para garantir que o Docker Engine está operando corretamente e capaz de
+se comunicar com o Registry padrão (Docker Hub), execute o comando de
+teste oficial:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>hello-world
+</code></pre></div>
+<p>Se a instalação estiver correta, este comando fará o download de uma
+imagem de teste, criará um container, exibirá uma mensagem de sucesso no
+terminal e será encerrado.</p>
+<h3 id="passo-3-criacao-do-dockerfile">Passo 3: Criação do Dockerfile</h3>
+<p>Na raiz do seu projeto, crie um arquivo com o nome exato de <code>Dockerfile</code>
+(sem extensão). Este arquivo ditará como a imagem da sua aplicação será
+montada.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Define a imagem base a ser utilizada</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">ubuntu:latest</span>
+
+<span class="c"># Executa comandos de atualização no sistema isolado</span>
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>curl
+
+<span class="c"># Define o diretório de trabalho dentro do container</span>
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
+
+<span class="c"># Comando padrão que manterá o container em execução</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"bash"</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="caminho-de-estudo-recomendado">Caminho de estudo recomendado</h3>
+<p>A equipe sugere seguir esta ordem no site oficial
+(<a href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a>):</p>
+<ol>
+<li>Ler a página <strong>What is Docker?</strong>. As primeiras partes bastam. A
+    parte sobre a arquitetura do Docker pode ficar para depois.</li>
+<li>Estudar a seção <strong>Docker concepts → The basics</strong>. Ela explica
+    container, imagem, registry e Docker Compose, e ensina a criar um
+    repositório no Docker Hub e enviar uma imagem. Cada página tem um
+    vídeo, caso você prefira assistir a ler. Esta parte é essencial.</li>
+<li>Depois, você pode aprofundar-se nos outros tópicos disponíveis nesse
+    link.</li>
+</ol>
+<hr />
+<h2 id="4-aplicacao-pratica">4. Aplicação Prática</h2>
+<p>No fluxo de trabalho diário de desenvolvimento e operações, a interação
+com o Docker ocorre primordialmente através da Interface de Linha de
+Comando (CLI). O ciclo de vida de um container depende de processos
+ativos; se o processo principal de um container for concluído ou
+interrompido, o container será desligado.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desenvolvedor
+    participant CLI as Docker CLI
+    participant Engine as Docker Engine
+
+    Dev-&gt;&gt;CLI: docker build -t .
+    CLI-&gt;&gt;Engine: Processa Dockerfile
+    Engine--&gt;&gt;Dev: Imagem Criada
+
+    Dev-&gt;&gt;CLI: docker run
+    CLI-&gt;&gt;Engine: Inicia Container isolado
+    Engine--&gt;&gt;Dev: Container em execução</code></pre>
+<h3 id="comandos-essenciais-de-gestao-diaria">Comandos Essenciais de Gestão Diária</h3>
+<hr />
+<p>Comando                             O que faz</p>
+<hr />
+<p><code>docker run hello-world</code>            Cria e executa um container de
+                                      teste para confirmar a instalação.</p>
+<p><code>docker run -it ubuntu bash</code>        Cria e executa um container Ubuntu
+                                      interativo, abrindo o terminal
+                                      (bash).</p>
+<p><code>docker ps</code>                         Lista os containers que estão
+                                      atualmente em execução.</p>
+<p><code>docker ps -a</code>                      Lista todos os containers da
+                                      máquina, incluindo os parados ou
+                                      que falharam.</p>
+<p><code>docker stop &lt;ID&gt;</code>                  Interrompe graciosamente a execução
+                                      de um container ativo.</p>
+<p><code>docker start &lt;ID&gt;</code>                 Reinicia a execução de um container
+                                      que estava parado.</p>
+<p><code>docker exec -it &lt;ID&gt; bash</code>         Abre um terminal interativo dentro
+                                      de um container que já está
+                                      rodando, permitindo investigar o
+                                      ambiente interno sem pará-lo.</p>
+<hr />
+<hr />
+<h2 id="5-casos-de-uso-e-exemplos">5. Casos de Uso e Exemplos</h2>
+<p>Abaixo estão cenários práticos de como o Docker resolve problemas
+operacionais de forma isolada e previsível.</p>
+<h3 id="exemplo-1-ambiente-de-testes-limpo-com-ubuntu-interativo">Exemplo 1: Ambiente de testes limpo com Ubuntu interativo</h3>
+<p>Muitas vezes é necessário testar comandos em um sistema operacional
+específico sem afetar a máquina física:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># A flag -it (interativo e alocação de TTY) permite que o terminal não feche.</span>
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>ubuntu<span class="w"> </span>bash
+</code></pre></div>
+<h3 id="exemplo-2-execucao-de-um-banco-de-dados-temporario">Exemplo 2: Execução de um banco de dados temporário</h3>
+<p>Para desenvolver aplicações sem instalações complexas na máquina host:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Executa um container do PostgreSQL em segundo plano (-d) e expõe a porta 5432.</span>
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>meu-postgres<span class="w"> </span>-p<span class="w"> </span><span class="m">5432</span>:5432<span class="w"> </span>-e<span class="w"> </span><span class="nv">POSTGRES_PASSWORD</span><span class="o">=</span>senha_segura<span class="w"> </span>postgres
+</code></pre></div>
+<h3 id="exemplo-3-envio-da-imagem-para-um-registry-docker-hub">Exemplo 3: Envio da imagem para um Registry (Docker Hub)</h3>
+<p>Após construir a aplicação, o deploy exige enviar a imagem final para um
+registro:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Autenticar no Docker Hub</span>
+docker<span class="w"> </span>login
+
+<span class="c1"># 2. Renomear (tagear) a imagem com o padrão do usuário</span>
+docker<span class="w"> </span>tag<span class="w"> </span>minha-app:latest<span class="w"> </span>meu-usuario/minha-app:v1.0
+
+<span class="c1"># 3. Enviar para a nuvem</span>
+docker<span class="w"> </span>push<span class="w"> </span>meu-usuario/minha-app:v1.0
+</code></pre></div>
+<hr />
+<h2 id="6-desafios-comuns-e-solucoes">6. Desafios Comuns e Soluções</h2>
+<h3 id="problema-1-o-container-inicia-e-para-morre-imediatamente">Problema 1: O Container inicia e para (morre) imediatamente</h3>
+<p><strong>Causa:</strong> Um container Docker só permanece ativo enquanto houver um
+processo rodando em primeiro plano (<em>foreground</em>) dentro dele. Se o
+comando padrão da imagem for apenas um script que termina rapidamente, o
+container é encerrado.</p>
+<p><strong>Solução:</strong> Garanta que o <code>CMD</code> no seu Dockerfile chame um serviço
+contínuo (como um servidor web) ou execute o container com uma flag
+interativa (<code>-it</code>) caso precise que ele aguarde comandos.</p>
+<h3 id="problema-2-erro-permission-denied-ao-executar-comandos-do-docker">Problema 2: Erro "Permission denied" ao executar comandos do Docker</h3>
+<p><strong>Causa:</strong> O Docker Daemon (Engine) se comunica via soquetes do Unix que
+exigem privilégios de administrador (<code>root</code>).</p>
+<p><strong>Solução:</strong> Execute utilizando <code>sudo</code> ou adicione seu usuário padrão ao
+grupo <code>docker</code>:</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div>
+<p>Reinicie a sessão em seguida.</p>
+<h3 id="problema-3-erro-port-is-already-allocated-ou-address-already-in-use">Problema 3: Erro "Port is already allocated" ou "Address already in use"</h3>
+<p><strong>Causa:</strong> A porta da máquina hospedeira mapeada com a flag <code>-p</code> já está
+sendo utilizada por outra aplicação ou container.</p>
+<p><strong>Solução:</strong> Pare a aplicação concorrente ou altere o mapeamento (ex.:
+de <code>-p 80:80</code> para <code>-p 8080:80</code>).</p>
+<hr />
+<h2 id="7-glossario-de-termos">7. Glossário de Termos</h2>
+<ul>
+<li><strong>Container:</strong> Ambiente isolado que executa uma aplicação a partir
+    de uma imagem.</li>
+<li><strong>Docker Compose:</strong> Ferramenta para gerenciar múltiplos containers
+    simultaneamente.</li>
+<li><strong>Docker Hub:</strong> Registry público oficial para armazenamento de
+    imagens Docker.</li>
+<li><strong>Kernel:</strong> Núcleo do sistema operacional compartilhado entre o
+    container e a máquina hospedeira.</li>
+<li><strong>Registry:</strong> Serviço de distribuição e armazenamento de imagens.</li>
+<li><strong>WSL 2:</strong> Subsistema do Windows para Linux utilizado para executar
+    o Docker Desktop de forma nativa.</li>
+</ul>
+<hr />
+<h2 id="8-referencias-principais">8. Referências Principais</h2>
+<ul>
+<li><strong>Documentação Oficial - Guia Inicial:</strong>
+    <a href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a></li>
+<li><strong>Manuais e Conceitos Docker:</strong> <a href="https://docs.docker.com/">https://docs.docker.com/</a></li>
+<li><strong>Guia prático da DIO:</strong> <a href="https://www.dio.me/">https://www.dio.me/</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
