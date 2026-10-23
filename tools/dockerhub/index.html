@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#docker-hub" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -505,6 +510,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dockerhub
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -522,6 +547,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -665,6 +786,93 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -681,9 +889,152 @@
 
 
 
-  <h1>Dockerhub</h1>
+<h1 id="docker-hub">Docker Hub</h1>
+<p>O Docker Hub é o registry oficial do ecossistema Docker, operando como um serviço centralizado na internet para o armazenamento, versionamento e distribuição de imagens de contêineres. Ele viabiliza o compartilhamento de imagens com equipes e atua como a fonte principal da qual servidores realizam o download de aplicações para execução em ambientes de produção.</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>O Docker Hub armazena imagens empacotadas com todos os componentes necessários para a execução de uma aplicação, funcionando de maneira análoga ao GitHub, porém voltado para imagens de contêineres em vez de código-fonte. Cada imagem reside em um "Repositório", podendo ser pública ou privada, e o controle de versão é gerenciado por meio de "Tags" (ex: <code>1.0.0</code>, <code>latest</code>) ou códigos únicos chamados "Digests".</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Máquina Local] --&gt;|docker push| B((Docker Hub))
+    B --&gt;|docker pull| C[Servidor de Produção]
+    A --&gt;|docker build| A
+    C --&gt;|docker run| D[Contêiner em Execução]
+</code></pre>
+<h2 id="2-pre-requisitos-e-contexto">2. Pré-requisitos e Contexto</h2>
+<ul>
+<li>
+<p><strong>Motor Docker:</strong> Necessário ter o Docker Engine instalado localmente.</p>
+</li>
+<li>
+<p><strong>Conta Ativa:</strong> Cadastro realizado na plataforma Docker Hub.</p>
+</li>
+<li>
+<p><strong>Nome de Usuário:</strong> Definição de namespace exclusivo, aceitando apenas letras minúsculas e números.</p>
+</li>
+<li>
+<p><strong>Token de Acesso (PAT):</strong> Criação de um Personal Access Token para autenticação via terminal, garantindo maior segurança que o uso de senha direta.</p>
+</li>
+<li>
+<p><strong>Código-fonte da Aplicação:</strong> Arquivos do projeto acompanhados de um <code>Dockerfile</code> configurado.</p>
+</li>
+</ul>
+<h2 id="3-estruturacao-e-setup">3. Estruturação e Setup</h2>
+<p>Para habilitar a comunicação da sua máquina local ou servidor com o Docker Hub, configure a autenticação por meio do token de acesso pessoal gerado previamente.</p>
+<ol>
+<li>
+<p>Acesse o Docker Hub, navegue até a seção de segurança da conta e gere um "Personal Access Token".</p>
+</li>
+<li>
+<p>No ambiente local, autentique-se utilizando o token:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login<span class="w"> </span>-u<span class="w"> </span>&lt;SEU_USUARIO&gt;
+</code></pre></div>
+<p>Cole o token quando a senha for solicitada. A mensagem <code>Login Succeeded</code> validará o acesso.</p>
+<h2 id="4-aplicacao-pratica">4. Aplicação Prática</h2>
+<p>O ciclo de vida padrão de publicação e consumo de uma imagem abrange a construção local, o envio ao registry e o posterior download no ambiente de destino.</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant Dev as Desenvolvedor
+    participant Local as Docker Local
+    participant Hub as Docker Hub
+    participant Server as Servidor
 
-
+    Dev-&gt;&gt;Local: docker build -t &lt;USUARIO&gt;/&lt;APP&gt;:&lt;TAG&gt; .
+    Local--&gt;&gt;Dev: Imagem Construída
+    Dev-&gt;&gt;Local: docker push &lt;USUARIO&gt;/&lt;APP&gt;:&lt;TAG&gt;
+    Local-&gt;&gt;Hub: Upload das Camadas da Imagem
+    Server-&gt;&gt;Hub: docker pull &lt;USUARIO&gt;/&lt;APP&gt;:&lt;TAG&gt;
+    Hub--&gt;&gt;Server: Download das Camadas
+    Server-&gt;&gt;Server: docker run -d &lt;USUARIO&gt;/&lt;APP&gt;:&lt;TAG&gt;
+</code></pre>
+<p><strong>Fluxo de Publicação e Execução:</strong></p>
+<ol>
+<li>
+<p><strong>Construção da Imagem:</strong>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;:&lt;TAG&gt;<span class="w"> </span>.
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Envio para o Registry:</strong>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>push<span class="w"> </span>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;:&lt;TAG&gt;
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>Download e Execução (no Servidor):</strong>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>pull<span class="w"> </span>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;:&lt;TAG&gt;
+docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>&lt;NOME_DO_CONTAINER&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;PORTA_SERVIDOR&gt;:&lt;PORTA_APP&gt;<span class="w"> </span>--restart<span class="w"> </span>unless-stopped<span class="w"> </span>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;:&lt;TAG&gt;
+</code></pre></div></p>
+</li>
+</ol>
+<h2 id="5-casos-de-uso-e-exemplos">5. Casos de Uso e Exemplos</h2>
+<p><strong>Exemplo 1: Automação de Deploy via GitHub Actions</strong>
+Uma prática comum é integrar o repositório Git com o Docker Hub para envios automáticos a cada nova versão gerada.</p>
+<p>*Arquivo <code>.github/workflows/publicar.yml*</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Publicar imagem no Docker Hub</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'v*'</span>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">publicar</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Baixar o codigo</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Login no Docker Hub</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/login-action@v3</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_USERNAME }}</span>
+<span class="w">          </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_TOKEN }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Construir e enviar</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v6</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">context</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">          </span><span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.DOCKERHUB_USERNAME }}/&lt;NOME_DA_APP&gt;:${{ github.ref_name }}</span>
+</code></pre></div>
+<p>Este pipeline requer a configuração de <code>DOCKERHUB_USERNAME</code> e <code>DOCKERHUB_TOKEN</code> nos Secrets do repositório.</p>
+<p><strong>Exemplo 2: Otimização de Build Multi-Arquitetura</strong>
+Para garantir compatibilidade entre servidores (amd64) e máquinas locais (arm64, como processadores Apple Silicon), deve-se construir imagens multiplataforma.</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span>-t<span class="w"> </span>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;:&lt;TAG&gt;<span class="w"> </span>--push<span class="w"> </span>.
+</code></pre></div>
+<h2 id="6-desafios-comuns-e-solucoes">6. Desafios Comuns e Soluções</h2>
+<ul>
+<li><strong><code>denied: requested access to the resource is denied</code></strong></li>
+<li>
+<p><strong>Causa:</strong> Autenticação pendente ou nomenclatura incorreta.</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Execute <code>docker login</code> e certifique-se de que o nome da imagem inicia com seu nome de usuário (ex: <code>&lt;SEU_USUARIO&gt;/&lt;NOME_DA_APP&gt;</code>).</p>
+</li>
+<li>
+<p><strong><code>unauthorized: incorrect username or password</code></strong></p>
+</li>
+<li>
+<p><strong>Causa:</strong> Credenciais inválidas fornecidas no login.</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Revogue o token atual, gere um novo token de acesso (PAT) na plataforma Docker Hub e refaça o processo de login no terminal.</p>
+</li>
+<li>
+<p><strong><code>exec format error</code> ao iniciar o contêiner no servidor</strong></p>
+</li>
+<li>
+<p><strong>Causa:</strong> Incompatibilidade de arquitetura da CPU (imagem construída em ARM, servidor em AMD64, ou vice-versa).</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Construa a imagem especificando a arquitetura do servidor alvo utilizando a flag <code>--platform linux/amd64</code>.</p>
+</li>
+</ul>
+<h2 id="7-referencias">7. Referências</h2>
+<ul>
+<li>
+<p>Docker Hub Oficial: <a href="https://hub.docker.com">https://hub.docker.com</a></p>
+</li>
+<li>
+<p>Documentação do Docker Hub: <a href="https://docs.docker.com/docker-hub/">https://docs.docker.com/docker-hub/</a></p>
+</li>
+</ul>
 
 
 

@@ -77,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#docker-compose" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -477,6 +482,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -494,6 +519,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -665,6 +786,93 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introducao" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introdução
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pre-requisitos-e-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pré-requisitos e Contexto
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-estruturacao-e-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Estruturação e Setup
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-aplicacao-pratica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Aplicação Prática
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-casos-de-uso-e-exemplos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Casos de Uso e Exemplos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-desafios-comuns-e-solucoes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Desafios Comuns e Soluções
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -681,9 +889,152 @@
 
 
 
-  <h1>Docker Compose</h1>
+<h1 id="docker-compose">Docker Compose</h1>
+<p>O Docker Compose é uma ferramenta projetada para definir e orquestrar aplicações baseadas em múltiplos contêineres. Ele centraliza as configurações estruturais em um único arquivo de manifesto, erradicando a necessidade de gerenciar múltiplos scripts longos de linha de comando para subir serviços interconectados.</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>Enquanto o <code>Dockerfile</code> atua como a receita para gerar uma única imagem, o Docker Compose gerencia a infraestrutura da aplicação como um todo, mapeando como bancos de dados, APIs e front-ends se relacionam, expondo portas, declarando redes internas e persistindo dados através de volumes.</p>
+<pre class="mermaid"><code>mindmap
+  root((Docker Compose))
+    Serviços
+      Contêiner Web
+      Contêiner Banco de Dados
+      Contêiner Cache
+    Rede
+      Isolamento Interno
+      Resolução por DNS (Nomes)
+    Armazenamento
+      Volumes Nomeados (Dados)
+      Bind Mounts (Código)
+    Configurações
+      Variáveis de Ambiente
+      Mapeamento de Portas
+</code></pre>
+<h2 id="2-pre-requisitos-e-contexto">2. Pré-requisitos e Contexto</h2>
+<ul>
+<li>
+<p><strong>Docker Compose Instalado:</strong> A ferramenta é nativamente incluída no Docker Desktop. Em sistemas Linux, deve ser validada a presença do plugin através do comando <code>docker compose version</code>.</p>
+</li>
+<li>
+<p><strong>Conhecimento em YAML:</strong> O arquivo de configuração baseia-se na sintaxe YAML, onde o aninhamento estrito através de recuos (indentação com exatos dois espaços por nível) é mandatório e tabulações são proibidas.</p>
+</li>
+<li>
+<p><strong>Variáveis de Ambiente:</strong> É recomendada a padronização e externalização de dados sensíveis, exigindo familiaridade com a manipulação de arquivos <code>.env</code>.</p>
+</li>
+</ul>
+<h2 id="3-estruturacao-e-setup">3. Estruturação e Setup</h2>
+<p>A fundação do Docker Compose dá-se através do arquivo <code>compose.yaml</code> (ou <code>docker-compose.yml</code>), posicionado na raiz do projeto. A estrutura exige, no mínimo, a declaração do bloco <code>services:</code>.</p>
+<p><em>Arquivo base de configuração:</em></p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;NOME_DO_SERVICO_WEB&gt;</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"&lt;PORTA_LOCAL&gt;:&lt;PORTA_CONTAINER&gt;"</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARIAVEL_AMBIENTE=${VALOR_VARIAVEL}</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;NOME_VOLUME&gt;:/caminho/no/container</span>
 
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">&lt;NOME_VOLUME&gt;</span><span class="p">:</span>
+</code></pre></div>
+<h2 id="4-aplicacao-pratica">4. Aplicação Prática</h2>
+<p>A operação no dia a dia consiste na manipulação da stack através da CLI do Compose na mesma pasta do arquivo de configuração.</p>
+<ul>
+<li>
+<p><strong>Subir todos os serviços em segundo plano:</strong> <code>docker compose up -d</code></p>
+</li>
+<li>
+<p><strong>Visualizar o status dos serviços:</strong> <code>docker compose ps</code></p>
+</li>
+<li>
+<p><strong>Analisar logs em tempo real:</strong> <code>docker compose logs -f</code></p>
+</li>
+<li>
+<p><strong>Parar e destruir infraestrutura (preservando volumes):</strong> <code>docker compose down</code></p>
+</li>
+<li>
+<p><strong>Reconstruir imagens após alteração de código:</strong> <code>docker compose up -d --build</code></p>
+</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+    A[Executar 'docker compose up'] --&gt; B{Imagens existem?}
+    B --&gt;|Não| C[Executa Processo de Build/Pull]
+    C --&gt; D[Criação da Rede Padrão]
+    B --&gt;|Sim| D
+    D --&gt; E[Criação de Volumes]
+    E --&gt; F[Inicialização dos Contêineres conforme 'depends_on']
+</code></pre>
+<h2 id="5-casos-de-uso-e-exemplos">5. Casos de Uso e Exemplos</h2>
+<p><strong>Exemplo 1: Ambiente de Banco de Dados com Interface Administrativa (PostgreSQL + Adminer)</strong>
+Este exemplo ilustra a interconectividade e o condicionamento de dependências via healthcheck.</p>
+<p><em>Arquivo <code>compose.yaml</code>:</em></p>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:16</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_USER}</span>
+<span class="w">      </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_PASSWORD}</span>
+<span class="w">      </span><span class="nt">POSTGRES_DB</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${POSTGRES_DB}</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dados_db:/var/lib/postgresql/data</span>
+<span class="w">    </span><span class="nt">healthcheck</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">test</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"CMD-SHELL"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"pg_isready</span><span class="nv"> </span><span class="s">-U</span><span class="nv"> </span><span class="s">${POSTGRES_USER}</span><span class="nv"> </span><span class="s">-d</span><span class="nv"> </span><span class="s">${POSTGRES_DB}"</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">interval</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5s</span>
+<span class="w">      </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
 
+<span class="w">  </span><span class="nt">adminer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminer</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8080:8080"</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">service_healthy</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">dados_db</span><span class="p">:</span>
+</code></pre></div>
+<p>O serviço <code>adminer</code> aguardará o teste nativo <code>pg_isready</code> garantir que o banco <code>db</code> está efetivamente pronto e apto para conexões (service_healthy) antes de iniciar. As variáveis de ambiente devem estar declaradas em um arquivo <code>.env</code> na mesma pasta.</p>
+<h2 id="6-desafios-comuns-e-solucoes">6. Desafios Comuns e Soluções</h2>
+<ul>
+<li><strong><code>port is already allocated</code></strong></li>
+<li>
+<p><strong>Causa:</strong> A porta definida no lado host (local) já está sendo ocupada por outro processo no sistema operacional.</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Altere a porta mapeada localizada à esquerda no diretório <code>ports</code> do serviço (ex: mude <code>"8000:5000"</code> para <code>"8080:5000"</code>).</p>
+</li>
+<li>
+<p><strong>Erro de validação do arquivo (ex: <code>mapping values are not allowed</code>)</strong></p>
+</li>
+<li>
+<p><strong>Causa:</strong> Má estruturação, recuo incorreto de níveis ou uso de teclas <em>Tab</em> (tabulação) ao longo do arquivo YAML.</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Substitua eventuais tabulações por pares de espaço. Utilize o comando <code>docker compose config</code> para validar a sintaxe e identificar a linha comprometida.</p>
+</li>
+<li>
+<p><strong>Perda de dados de banco após reinicialização (<code>down -v</code>)</strong></p>
+</li>
+<li>
+<p><strong>Causa:</strong> Ocultação ou destruição de volumes configurados ao rodar o comando com a flag <code>-v</code>, que força a remoção de armazenamento permanente.</p>
+</li>
+<li>
+<p><strong>Solução:</strong> Abstenha-se da flag <code>-v</code> a menos que seja intencional zerar dados. Garanta que bancos de dados utilizem declarações persistentes na raiz de <code>volumes</code>.</p>
+</li>
+</ul>
+<h2 id="7-referencias">7. Referências</h2>
+<ul>
+<li>
+<p>Documentação do Docker Compose: <a href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></p>
+</li>
+<li>
+<p>Referência oficial de sintaxe (Compose-file): <a href="https://docs.docker.com/reference/compose-file/">https://docs.docker.com/reference/compose-file/</a></p>
+</li>
+</ul>
 
 
 
