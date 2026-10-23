@@ -30,6 +30,8 @@ nav:
       - MkDocs: tools/docs.md
       - Docker: tools/docker.md
       - Chrome DevTools: tools/devtools.md
+      - Docker Compose: tools/docker-compose.md
+      - Dockerhub: tools/dockerhub.md
   - Projetos Conceito:
       - ChatBots - Pi-Importadora: poc/piimportadora.md
       - Extração iFood & Mitmproxy: poc/ifood-scraping.md
