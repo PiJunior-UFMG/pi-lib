@@ -32,6 +32,7 @@ nav:
       - Chrome DevTools: tools/devtools.md
       - Docker Compose: tools/docker-compose.md
       - Dockerhub: tools/dockerhub.md
+      - Engenharia de contexto, skills e agentes: tools/agentes-skills-llm.md
   - Projetos Conceito:
       - ChatBots - Pi-Importadora: poc/piimportadora.md
       - Extração iFood & Mitmproxy: poc/ifood-scraping.md
