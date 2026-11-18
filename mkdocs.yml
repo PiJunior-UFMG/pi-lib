@@ -1,38 +1,93 @@
 site_name: pi-lib
-site_description: Documentação técnica e guias da piJunior
+site_description: Documentação técnica e guias da Pi Júnior
 site_author: Diretoria de Projetos
+copyright: >
+  Equipe de Projetos — Pi Júnior UFMG
 
 theme:
   name: material
+  language: pt-BR
   palette:
-    primary: indigo
-    accent: blue
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: Mudar para o modo escuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Mudar para o modo claro
   features:
     - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.instant
+    - toc.follow
     - search.suggest
+    - search.highlight
+    - content.code.copy
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/book
+      link: https://pijunior-ufmg.github.io/pi-lib/
+      name: Pi-Lib (Base de Conhecimento)
+    - icon: fontawesome/solid/globe
+      link: https://www.pijunior.com.br/
+      name: Site Oficial Pi Júnior
+    - icon: fontawesome/brands/instagram
+      link: https://www.instagram.com/pijunior_/
+      name: Instagram @pijunior_
+    - icon: fontawesome/solid/envelope
+      link: mailto:projetos@pijunior.com.br
+      name: E-mail de contato
+
+extra_css:
+  - stylesheets/extra.css
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
 
 markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-extra_javascript:
-  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
-extra_css:
-  - stylesheets/extra.css
-  
 nav:
   - Início: index.md
   - Ferramentas:
-      - Git e GitHub: tools/git-github.md
-      - MkDocs: tools/docs.md
-      - Docker: tools/docker.md
-      - Chrome DevTools: tools/devtools.md
-      - Docker Compose: tools/docker-compose.md
-      - Dockerhub: tools/dockerhub.md
-      - Engenharia de contexto, skills e agentes: tools/agentes-skills-llm.md
+      - Versionamento e colaboração:
+          - Git e GitHub: tools/git-github.md
+      - Contêineres e deploy:
+          - Docker: tools/docker.md
+          - Docker Compose: tools/docker-compose.md
+          - Docker Hub: tools/dockerhub.md
+      - Desenvolvimento e depuração:
+          - Terminal Bash: tools/terminal-bash.md
+          - Chrome DevTools: tools/devtools.md
+      - Documentação:
+          - MkDocs: tools/docs.md
+      - Inteligência artificial:
+          - Engenharia de contexto, skills e agentes: tools/agentes-skills-llm.md
   - Projetos Conceito:
-      - ChatBots - Pi-Importadora: poc/piimportadora.md
-      - Extração iFood & Mitmproxy: poc/ifood-scraping.md
+      - Chatbots - Pi Importadora: poc/piimportadora.md
+      - Extração iFood e Mitmproxy: poc/ifood-scraping.md
