@@ -1,0 +1,1718 @@
+
+<!doctype html>
+<html lang="pt" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentação técnica e guias da Pi Júnior">
+      
+      
+        <meta name="author" content="Diretoria de Projetos">
+      
+      
+      
+        <link rel="prev" href="../docs/">
+      
+      
+        <link rel="next" href="../../poc/piimportadora/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Engenharia de contexto, skills e agentes - pi-lib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#engenharia-de-contexto-skills-e-agentes-com-llms" class="md-skip">
+          Pular para conteúdo
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabeçalho">
+    <a href="../.." title="pi-lib" class="md-header__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pi-lib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Engenharia de contexto, skills e agentes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mudar para o modo escuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo escuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="blue"  aria-label="Mudar para o modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mudar para o modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Buscar" placeholder="Buscar" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Pesquisar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpar" aria-label="Limpar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando busca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Abas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Início
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../git-github/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Ferramentas
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../poc/piimportadora/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Projetos Conceito
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegação" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="pi-lib" class="md-nav__button md-logo" aria-label="pi-lib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pi-lib
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Início
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ferramentas
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ferramentas
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Versionamento e colaboração
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Versionamento e colaboração
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git e GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contêineres e deploy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contêineres e deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-compose/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Compose
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dockerhub/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Hub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desenvolvimento e depuração
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desenvolvimento e depuração
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terminal-bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminal Bash
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../devtools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chrome DevTools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentação
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentação
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MkDocs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inteligência artificial
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Inteligência artificial
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de contexto, skills e agentes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engenharia de contexto, skills e agentes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-quando-vale-a-pena-usar-um-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Quando vale a pena usar um LLM?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-como-organizar-o-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Como organizar o contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Como organizar o contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defina-a-tarefa-e-escolha-as-fontes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defina a tarefa e escolha as fontes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estruture-as-entradas-com-markdown-ou-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estruture as entradas com Markdown ou tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerencie-a-janela-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerencie a janela de contexto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-como-criar-system-prompts-e-skills-reutilizaveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Como criar system prompts e skills reutilizáveis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Como criar system prompts e skills reutilizáveis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transforme-uma-tarefa-recorrente-em-uma-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transforme uma tarefa recorrente em uma skill
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tutorial-assistente-de-revisao-de-prs-em-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tutorial: assistente de revisão de PRs em Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exemplos-para-o-dia-a-dia-da-pi-junior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Exemplos para o dia a dia da Pi Júnior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projetos Conceito
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projetos Conceito
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../poc/piimportadora/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chatbots - Pi Importadora
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../poc/ifood-scraping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extração iFood e Mitmproxy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Índice">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Índice
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-quando-vale-a-pena-usar-um-llm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Quando vale a pena usar um LLM?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-como-organizar-o-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Como organizar o contexto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Como organizar o contexto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#defina-a-tarefa-e-escolha-as-fontes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Defina a tarefa e escolha as fontes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estruture-as-entradas-com-markdown-ou-tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Estruture as entradas com Markdown ou tags
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gerencie-a-janela-de-contexto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gerencie a janela de contexto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-como-criar-system-prompts-e-skills-reutilizaveis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Como criar system prompts e skills reutilizáveis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Como criar system prompts e skills reutilizáveis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transforme-uma-tarefa-recorrente-em-uma-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transforme uma tarefa recorrente em uma skill
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-tutorial-assistente-de-revisao-de-prs-em-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Tutorial: assistente de revisão de PRs em Python
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exemplos-para-o-dia-a-dia-da-pi-junior" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Exemplos para o dia a dia da Pi Júnior
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-referencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Referências
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="engenharia-de-contexto-skills-e-agentes-com-llms">Engenharia de contexto, skills e agentes com LLMs<a class="headerlink" href="#engenharia-de-contexto-skills-e-agentes-com-llms" title="Permanent link">&para;</a></h1>
+<p>Este guia mostra como preparar o contexto de uma tarefa, transformar instruções recorrentes em skills e configurar um assistente especializado para o dia a dia da Pi Júnior.</p>
+<hr />
+<h2 id="1-quando-vale-a-pena-usar-um-llm">1. Quando vale a pena usar um LLM?<a class="headerlink" href="#1-quando-vale-a-pena-usar-um-llm" title="Permanent link">&para;</a></h2>
+<p>Use um modelo de linguagem (LLM) para acelerar trabalhos como resumir reuniões, propor critérios de aceite, revisar código e preparar documentação. Com fontes claras e um formato de saída definido, a equipe reduz retrabalho, padroniza entregáveis e diminui a chance de receber afirmações inventadas. Para aprender, peça pistas, exemplos e explicações sobre as decisões e valide o que aprendeu com um teste ou com a documentação original.</p>
+<p>A revisão humana faz parte do fluxo. Em uma ata, confira decisões, responsáveis e prazos. Em um PR, valide os achados no diff e execute os testes relevantes. Em documentação, reproduza os comandos antes de publicar. Para medir o ganho, compare o tempo total até a aprovação, incluindo a revisão e as correções.</p>
+<h2 id="2-como-organizar-o-contexto">2. Como organizar o contexto<a class="headerlink" href="#2-como-organizar-o-contexto" title="Permanent link">&para;</a></h2>
+<p>A engenharia de prompt trata de como formular o pedido. A engenharia de contexto abrange também os dados que chegam ao modelo para executá-lo, como instruções, histórico, referências e resultados de ferramentas.</p>
+<h3 id="defina-a-tarefa-e-escolha-as-fontes">Defina a tarefa e escolha as fontes<a class="headerlink" href="#defina-a-tarefa-e-escolha-as-fontes" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>Objetivo:</strong> indique o entregável e quem vai usá-lo.</li>
+<li><strong>Escopo:</strong> diga o que pode ser consultado ou alterado e quais decisões já estão fechadas.</li>
+<li><strong>Referências:</strong> inclua trechos relevantes, links acessíveis, paths e versões. Identifique a fonte que prevalece em caso de divergência. Se o modelo não puder abrir um link, forneça o trecho correspondente.</li>
+<li><strong>Saída:</strong> especifique os títulos, campos e critérios de qualidade. Um exemplo curto ajuda quando o padrão tem detalhes difíceis de explicar.</li>
+<li><strong>Lacunas:</strong> instrua o modelo a indicar o que precisa ser confirmado e a pedir esclarecimento quando isso impedir a execução da tarefa.</li>
+</ol>
+<h3 id="estruture-as-entradas-com-markdown-ou-tags">Estruture as entradas com Markdown ou tags<a class="headerlink" href="#estruture-as-entradas-com-markdown-ou-tags" title="Permanent link">&para;</a></h3>
+<p>Ao pedir “Crie uma User Story para o treinamento”, inclua o recorte do módulo e critérios que outra pessoa consiga testar. Este exemplo usa um cenário <strong>ilustrativo</strong> inspirado no treinamento de Python.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Objetivo</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Escreva uma User Story para o desafio de consumo de API do treinamento de Python.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gu">## Escopo</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Use uma resposta simulada de API. Cubra a geração do relatório,
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>o tratamento de campos obrigatórios ausentes e a indisponibilidade da API.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="gu">## Saída</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Entregue título, história no formato “Como…, quero…, para…”,
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>critérios Dado / Quando / Então e uma seção “Pontos a confirmar”.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="gu">## Regras</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Use somente os requisitos do briefing. Marque como “A confirmar”
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>a escolha de biblioteca e o formato do relatório, se não estiverem definidos.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>&lt;referencia id="briefing-exemplo"&gt;
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>O trainee deverá ler uma lista de registros e gerar um relatório
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>com os registros válidos. Quando a API estiver indisponível,
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>o programa deverá exibir uma mensagem de erro compreensível.
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>&lt;/referencia&gt;
+</code></pre></div>
+<p>Uma resposta fundamentada poderia trazer este critério: <strong>Dado</strong> que a API está indisponível, <strong>quando</strong> o trainee executar o programa, <strong>então</strong> o programa deverá mostrar uma mensagem de erro compreensível. A regra exata para campos obrigatórios e o formato do relatório entram em <strong>Pontos a confirmar</strong>.</p>
+<p>Os títulos Markdown facilitam a leitura e a edição. Tags como <code>&lt;referencia&gt;</code> ajudam a delimitar blocos, principalmente quando há várias fontes. Elas organizam o texto, mas não impõem permissões. Trate comandos que venham de páginas, diffs ou anexos como parte do material analisado. Use os controles da ferramenta para limitar o que o assistente pode ler e executar.</p>
+<h3 id="gerencie-a-janela-de-contexto">Gerencie a janela de contexto<a class="headerlink" href="#gerencie-a-janela-de-contexto" title="Permanent link">&para;</a></h3>
+<p>A janela de contexto é a quantidade de tokens que o modelo consegue considerar em uma execução. Tokens são unidades de texto usadas pelo modelo. Para planejar o uso da janela, conte instruções, histórico, documentos e resultados de ferramentas e reserve espaço para a resposta, respeitando os limites do produto.</p>
+<ul>
+<li><strong>Selecione:</strong> para revisar um PR, comece pelo diff, pela descrição e pelos testes afetados. Busque arquivos adicionais à medida que surgir uma dependência concreta.</li>
+<li><strong>Comprima:</strong> resuma sessões longas em decisões, pendências e referências. Preserve literalmente números, condições de aceite e mensagens de erro relevantes.</li>
+<li><strong>Isole:</strong> em tarefas longas, trabalhe por etapa e passe para a etapa seguinte apenas os resultados aprovados e as fontes necessárias.</li>
+<li><strong>Recupere quando precisar:</strong> se a base de documentação crescer, use busca por texto ou embeddings para recuperar os trechos relevantes. Quando esses trechos são inseridos no contexto para o modelo gerar uma resposta fundamentada, o fluxo é chamado de <em>Retrieval-Augmented Generation</em> (RAG). Confira se o trecho veio da página e da versão certas.</li>
+</ul>
+<h2 id="3-como-criar-system-prompts-e-skills-reutilizaveis">3. Como criar system prompts e skills reutilizáveis<a class="headerlink" href="#3-como-criar-system-prompts-e-skills-reutilizaveis" title="Permanent link">&para;</a></h2>
+<p>Um <strong>system prompt</strong> define instruções que a aplicação fornece ao modelo para orientar seu comportamento, como papel, limites e tratamento de dúvidas. Em plataformas com assistentes configuráveis, a equipe pode definir regras persistentes no campo de instruções do assistente ou no repositório, conforme o produto. Uma <strong>skill</strong> reúne o procedimento de uma tarefa recorrente, com as entradas, os passos e a saída esperada. Dependendo da plataforma, ela pode carregar referências, exemplos ou scripts.</p>
+<p>Use o bloco persistente para regras gerais, como “fundamente observações de revisão no diff”. Coloque na skill o procedimento de uma tarefa específica, como “revisar tratamento de erros em um PR Python”. Forneça os dados de cada execução, como o diff de hoje, junto ao pedido.</p>
+<h3 id="transforme-uma-tarefa-recorrente-em-uma-skill">Transforme uma tarefa recorrente em uma skill<a class="headerlink" href="#transforme-uma-tarefa-recorrente-em-uma-skill" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Escolha uma tarefa com um entregável que a equipe consiga revisar.</li>
+<li>Use uma saída aprovada como referência e retire dela dados de clientes ou informações pessoais.</li>
+<li>Registre o gatilho, as entradas mínimas, o procedimento e os campos de saída.</li>
+<li>Defina o que fazer quando faltarem dados e quais verificações aplicar antes de concluir.</li>
+<li>Teste com um caso comum, um incompleto e um com fontes conflitantes. Versione o texto junto aos padrões da equipe e revise os exemplos quando o processo mudar.</li>
+</ol>
+<p>Em ferramentas compatíveis com o formato <strong>Agent Skills</strong>, salve o exemplo em <code>gerar-ata/SKILL.md</code>. O campo <code>name</code> corresponde ao diretório e <code>description</code> explica quando usar a skill. Adicione modelos ou referências em arquivos separados quando isso facilitar a manutenção.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>---
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>name: gerar-ata
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="gu">description: Produz uma ata de projeto a partir de notas ou transcrição de reunião.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="gu">---</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="gh"># Gerar ata de projeto</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="gu">## Entradas</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>Notas ou transcrição e, quando disponíveis, data e nome do projeto.
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="gu">## Procedimento</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">1.</span> Sintetize os assuntos discutidos em até três pontos.
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">2.</span> Registre como decisão apenas aquilo que foi explicitamente acordado.
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="k">3.</span> Extraia as ações confirmadas. Use “A confirmar” para responsável
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>   ou prazo ausente. Se houver duas versões conflitantes, registre a pendência.
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="k">4.</span> Confira se cada decisão e ação pode ser localizada na entrada.
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="gu">## Saída</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="k">-</span><span class="w"> </span>Resumo
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="k">-</span><span class="w"> </span>Decisões confirmadas
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">-</span><span class="w"> </span>Ações em tabela com as colunas Ação, Responsável e Prazo
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="k">-</span><span class="w"> </span>Pendências
+</code></pre></div>
+<p>Se a ferramenta só oferecer um campo de instruções de projeto, guarde o texto em um arquivo versionado e use o corpo da skill nesse campo ou cole-o quando a tarefa for solicitada.</p>
+<h2 id="4-tutorial-assistente-de-revisao-de-prs-em-python">4. Tutorial: assistente de revisão de PRs em Python<a class="headerlink" href="#4-tutorial-assistente-de-revisao-de-prs-em-python" title="Permanent link">&para;</a></h2>
+<p>O exemplo usa o GitHub Copilot na IDE. O objetivo é revisar PRs do treinamento de Python com foco em critérios de aceite e falhas verificáveis.</p>
+<ol>
+<li><strong>Configure o escopo.</strong> Para regras comuns do repositório, adicione o bloco abaixo a <code>.github/copilot-instructions.md</code>. Para regras exclusivas dos arquivos Python, use <code>.github/instructions/python-review.instructions.md</code> com o cabeçalho YAML abaixo, em clientes com suporte a instruções por caminho. Como esse filtro depende de quais arquivos estão no contexto, cite os arquivos Python do diff ao pedir a revisão.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nn">---</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">applyTo</span><span class="p">:</span><span class="w"> </span><span class="s">"**/*.py"</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nn">---</span>
+</code></pre></div>
+<ol>
+<li><strong>Defina papel, regras, restrições e saída.</strong> Copie o trecho a seguir como corpo das instruções.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="gu">## Revisão de PRs em Python</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Use estas instruções quando o usuário pedir uma revisão de alterações em Python.
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="gu">### Papel</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Atue como revisor técnico. Compare o diff com o briefing e os testes
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>relacionados. Priorize falhas que afetem a execução ou os critérios de aceite.
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="gu">### Regras</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="k">-</span><span class="w"> </span>Em mudanças que consomem uma API, confira como o código trata
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  falhas de rede, respostas de erro e campos obrigatórios do briefing.
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">-</span><span class="w"> </span>Use o diff, os critérios da tarefa e os testes como evidência.
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">-</span><span class="w"> </span>Indique os dados que faltam. Informe separadamente se algum teste
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>  foi executado e qual foi o resultado obtido.
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="k">-</span><span class="w"> </span>Trabalhe em modo de revisão. Entregue observações para uma pessoa
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  decidir quais mudanças aplicar.
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="gu">### Saída obrigatória em Markdown</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Resumo:**</span> uma frase sobre a mudança e o escopo revisado.
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Achados:**</span> um item por problema, com gravidade, arquivo/linha,
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  evidência, impacto e ajuste sugerido.
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Verificações e pendências:**</span> testes executados, verificações
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  sugeridas e informações que faltam.
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="k">-</span><span class="w"> </span>Se não houver achados sustentados pelo material, informe isso
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>  em “Achados”.
+</code></pre></div>
+<ol>
+<li><strong>Forneça o contexto da execução.</strong> Peça no chat da IDE “Revise este diff do desafio de API”. Inclua o diff, os testes e o critério de aceite que exige uma mensagem clara quando a API ficar indisponível.</li>
+<li><strong>Verifique o comportamento.</strong> Em um diff ilustrativo no qual <code>src/relatorio.py</code> chama <code>requests.get</code> sem tratar erro de rede, espere um achado apontando a linha da chamada, o impacto e um teste que simule a falha. Repita com o tratamento presente e verifique se o achado deixa de aparecer. Faça uma terceira rodada sem o briefing e confira se o assistente sinaliza que os critérios de aceite estão indisponíveis.</li>
+<li><strong>Controle as ações no ambiente.</strong> Comece com leitura de arquivos. Se usar um modo com ferramentas, ajuste as permissões no cliente e disponibilize apenas o necessário. A revisão de um PR pode terminar com uma lista local de achados para avaliação humana. A publicação de comentários e a alteração de arquivos são ações distintas, que dependem do pedido e das permissões do ambiente.</li>
+</ol>
+<p>Uma <strong>persona</strong> fornece papel e regras para a resposta. Um <strong>agente</strong> também pode escolher ações e usar ferramentas em várias etapas, por exemplo, ler o diff, buscar os testes relacionados e executar comandos de teste disponíveis. Para migrar o exemplo para o Cursor, crie uma Project Rule em <code>.cursor/rules/</code> e configure onde ela se aplica. O arquivo <code>.cursorrules</code> é legado. Em um GPT personalizado, quando disponível, coloque o papel, as regras e a saída em <strong>Instructions</strong>, os exemplos e guias autorizados em <strong>Knowledge</strong> e teste os casos na prévia.</p>
+<h2 id="5-exemplos-para-o-dia-a-dia-da-pi-junior">5. Exemplos para o dia a dia da Pi Júnior<a class="headerlink" href="#5-exemplos-para-o-dia-a-dia-da-pi-junior" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tarefa</th>
+<th>Contexto mínimo</th>
+<th>Entrega e o que conferir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ata de reunião de projeto</td>
+<td>Notas, data e nome do projeto</td>
+<td>Confirme decisões, responsáveis e prazos diretamente nas notas.</td>
+</tr>
+<tr>
+<td>User Story do treinamento</td>
+<td>Briefing do módulo, público e escopo</td>
+<td>Confira se cada critério descreve um comportamento observável e se requisitos em aberto estão sinalizados.</td>
+</tr>
+<tr>
+<td>Revisão de PR de integração com API</td>
+<td>Diff, critérios e testes afetados</td>
+<td>Verifique se cada achado tem evidência no código e se os testes relatados foram executados.</td>
+</tr>
+<tr>
+<td>Documentação de uma ferramenta</td>
+<td>Comandos testados, versão da ferramenta e o <a href="../docs/">manual da Pi-Lib</a></td>
+<td>Reproduza a instalação e confirme a página na seção <strong>Ferramentas</strong> do MkDocs.</td>
+</tr>
+</tbody>
+</table>
+<p>Antes de enviar arquivos a um assistente, confirme se o acesso e o compartilhamento são autorizados para aquele ambiente. Remova credenciais, tokens de API e dados desnecessários de clientes. Prefira exemplos sintéticos em material de treinamento.</p>
+<h2 id="6-referencias">6. Referências<a class="headerlink" href="#6-referencias" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.anthropic.com/research/effective-context-engineering-for-ai-agents">Anthropic — Effective context engineering for AI agents</a></li>
+<li><a href="https://agentskills.io/specification">Agent Skills — Especificação do formato</a></li>
+<li><a href="https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/customize-copilot/configure-custom-instructions/add-repository-instructions-in-your-ide">GitHub — Instruções de repositório para o Copilot na IDE</a></li>
+<li><a href="https://docs.cursor.com/context/rules-for-ai">Cursor — Regras de contexto</a></li>
+<li><a href="https://help.openai.com/en/articles/8554397-creating-and-editing-gpts">OpenAI — Criação e edição de GPTs</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Voltar para o topo
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Equipe de Projetos — Pi Júnior UFMG
+
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://pijunior-ufmg.github.io/pi-lib/" target="_blank" rel="noopener" title="Pi-Lib (Base de Conhecimento)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.pijunior.com.br/" target="_blank" rel="noopener" title="Site Oficial Pi Júnior" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M351.9 280H161c2.9 64.5 17.2 123.9 37.5 167.4 11.4 24.5 23.7 41.8 35.1 52.4 11.2 10.5 18.9 12.2 22.9 12.2s11.7-1.7 22.9-12.2c11.4-10.6 23.7-28 35.1-52.4 20.3-43.5 34.6-102.9 37.5-167.4zm-191-48h190.9c-2.8-64.5-17.1-123.9-37.4-167.4-11.4-24.4-23.7-41.8-35.1-52.4C268.1 1.7 260.4 0 256.4 0s-11.7 1.7-22.9 12.2c-11.4 10.6-23.7 28-35.1 52.4-20.3 43.5-34.6 102.9-37.5 167.4m-48 0c3.5-85.6 25.6-165.1 57.9-217.3C78.7 47.3 10.9 131.2 1.5 232zM1.5 280c9.4 100.8 77.2 184.7 169.3 217.3-32.3-52.2-54.4-131.7-57.9-217.3zm398.4 0c-3.5 85.6-25.6 165.1-57.9 217.3 92.1-32.7 159.9-116.5 169.3-217.3zm111.4-48C501.9 131.2 434.1 47.3 342 14.7c32.3 52.2 54.4 131.7 57.9 217.3z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://www.instagram.com/pijunior_/" target="_blank" rel="noopener" title="Instagram @pijunior_" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M224.3 141a115 115 0 1 0-.6 230 115 115 0 1 0 .6-230m-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1-.6-149.2m93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1-53.6 0m129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8M399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:projetos@pijunior.com.br" target="_blank" rel="noopener" title="E-mail de contato" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4l208 156a48 48 0 0 0 57.6 0l208-156c12.1-9.1 19.2-23.3 19.2-38.4 0-26.5-21.5-48-48-48zM0 196v188c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V196L313.6 344.8c-34.1 25.6-81.1 25.6-115.2 0z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.indexes", "navigation.top", "navigation.instant", "toc.follow", "search.suggest", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado para \u00e1rea de transfer\u00eancia", "clipboard.copy": "Copiar para \u00e1rea de transfer\u00eancia", "search.result.more.one": "mais 1 nesta p\u00e1gina", "search.result.more.other": "# mais nesta p\u00e1gina", "search.result.none": "Nenhum documento encontrado", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Digite para iniciar a busca", "search.result.term.missing": "Ausente", "select.version": "Selecione a vers\u00e3o"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://unpkg.com/mermaid@11/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
