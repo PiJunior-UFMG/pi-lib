@@ -164,7 +164,16 @@ Uma **persona** fornece papel e regras para a resposta. Um **agente** também po
 
 Antes de enviar arquivos a um assistente, confirme se o acesso e o compartilhamento são autorizados para aquele ambiente. Remova credenciais, tokens de API e dados desnecessários de clientes. Prefira exemplos sintéticos em material de treinamento.
 
-## 6. Referências
+## 6. Links úteis de skills que podem serem úteis
+[reuniao.txt](https://github.com/user-attachments/files/35081694/reuniao.txt)
+[readme.txt](https://github.com/user-attachments/files/35081698/readme.txt)
+[reuniao_assinatura.txt](https://github.com/user-attachments/files/35081703/reuniao_assinatura.txt)
+[task.txt](https://github.com/user-attachments/files/35081702/task.txt)
+[pi-lib.txt](https://github.com/user-attachments/files/35081701/pi-lib.txt)
+[formatar_latex.txt](https://github.com/user-attachments/files/35081700/formatar_latex.txt)
+
+
+## 7. Referências
 
 - [Anthropic — Effective context engineering for AI agents](https://www.anthropic.com/research/effective-context-engineering-for-ai-agents)
 - [Agent Skills — Especificação do formato](https://agentskills.io/specification)
