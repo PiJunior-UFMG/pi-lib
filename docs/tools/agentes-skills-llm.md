@@ -164,13 +164,469 @@ Uma **persona** fornece papel e regras para a resposta. Um **agente** também po
 
 Antes de enviar arquivos a um assistente, confirme se o acesso e o compartilhamento são autorizados para aquele ambiente. Remova credenciais, tokens de API e dados desnecessários de clientes. Prefira exemplos sintéticos em material de treinamento.
 
-## 6. Links úteis de skills que podem serem úteis
-[reuniao.txt](https://github.com/user-attachments/files/35081694/reuniao.txt)
-[readme.txt](https://github.com/user-attachments/files/35081698/readme.txt)
-[reuniao_assinatura.txt](https://github.com/user-attachments/files/35081703/reuniao_assinatura.txt)
-[task.txt](https://github.com/user-attachments/files/35081702/task.txt)
-[pi-lib.txt](https://github.com/user-attachments/files/35081701/pi-lib.txt)
-[formatar_latex.txt](https://github.com/user-attachments/files/35081700/formatar_latex.txt)
+
+## 6. Skills disponíveis
+
+Clique no nome de uma skill para expandir seu conteúdo. Os prompts podem ser lidos e copiados diretamente nesta página, sem a necessidade de baixar arquivos.
+
+<details>
+<summary><strong>reuniao.txt</strong></summary>
+
+````text
+**Atue como um Assistente Executivo Sênior especializado em secretariado corporativo, análise de reuniões e especialista em formatação LaTeX.**
+
+Vou fornecer abaixo a transcrição bruta de uma reunião. Seu objetivo é analisar esse texto e redigir uma "Ata de Reunião" completa, altamente profissional, estruturada e objetiva.
+
+Aqui estão as diretrizes de negócio e design que você deve aplicar ao estruturar o documento:
+
+1. **Síntese e Clareza:** Analise todo o contexto antes de escrever. Ignore conversas paralelas ("small talk"), gaguejos e vícios de linguagem. Corrija mentalmente erros óbvios de transcrição.
+2. **Formatação Estrita e Estrutura Limpa:** Na seção "Detalhes", **não utilize marcadores (bullet points)** ou listas (`itemize`). Cada tópico deve ser um parágrafo contínuo iniciado pelo tema em negrito, seguido do texto fluido.
+3. **Minutagem:** Na seção de "Detalhes", é obrigatório incluir o carimbo de tempo (ex: (00:15:30)) no final de cada parágrafo/tópico abordado.
+4. **Exclusão da Transcrição:** Sob nenhuma hipótese inclua a transcrição bruta da reunião no documento gerado. Entregue APENAS os insights estruturados nas seções definidas.
+
+Não resuma nenhum tópico discutido.
+
+DIRETRIZ DE SAÍDA (FORMATO OBRIGATÓRIO):
+A sua resposta DEVE ser exclusivamente o código fonte em LaTeX, pronto para ser compilado em um PDF profissional. Você não deve adicionar nenhuma explicação fora do bloco de código.
+
+Você DEVE utilizar estritamente o template abaixo como base para o seu documento, mantendo os pacotes, as definições de cores (`piblue`, `pigray`) e a formatação do `titlesec` (que garante os títulos H1 em azul com a linha de separação). Apenas substitua os placeholders (como `[TEMA PRINCIPAL]`, datas e participantes) e preencha o documento com as seções (Resumo, Próximas etapas, Detalhes) geradas a partir da transcrição:
+
+```latex
+\documentclass[12pt, a4paper]{article}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[brazil]{babel}
+
+% Definição de cores padronizadas
+\definecolor{piblue}{RGB}{0, 82, 204}
+\definecolor{pigray}{RGB}{94, 108, 132}
+
+% Formatação de títulos (H1 em azul com separador)
+\titleformat{\section}{\color{piblue}\normalfont\Large\bfseries}{}{0em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}{\color{pigray}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{
+    \vspace{-1.5cm}
+    \textbf{\Huge \textcolor{piblue}{ATA DE REUNIÃO}}\\
+    \vspace{0.3cm}
+    \Large [TEMA PRINCIPAL DA REUNIÃO]
+}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\vspace{-2cm}
+\thispagestyle{empty}
+
+\noindent\textbf{Data:} [Insira a data identificada]\\
+\textbf{Horário:} [Insira o horário de início e fim]\\
+\textbf{Participantes:} [Liste os nomes e papéis]
+
+\vspace{1cm}
+
+% === CONTEÚDO GERADO ===
+% Preencha com as seções abaixo usando \section{Nome da Seção}
+
+\section{Resumo}
+% Crie 1 a 3 parágrafos coesos resumindo os principais pontos de discussão, os problemas levantados e as direções gerais acordadas. Junte temas num texto fluido e objetivo.
+
+\section{Próximas etapas}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{[Nome do Responsável]} Nome Curto da Ação: Descrição detalhada do que a pessoa deve fazer, prazos e o objetivo.
+\end{itemize}
+
+\section{Detalhes}
+% Lembre-se: NÃO utilize \begin{itemize} aqui. Cada tema deve ser um parágrafo.
+\textbf{[Tema do Tópico em Negrito]:} [Nome da pessoa] relata/afirma/questiona que [descrição rica e detalhada do argumento, problema técnico ou solução proposta] (HH:MM:SS).
+
+\textbf{[Outro Tema]:} Texto fluido da discussão... (HH:MM:SS).
+
+\end{document}
+
+```
+
+Aqui está a transcrição bruta da reunião:
+
+[COLE AQUI A SUA TRANSCRIÇÃO]
+````
+
+</details>
+
+<details>
+<summary><strong>readme.txt</strong></summary>
+
+````text
+Atue como um desenvolvedor experiente escrevendo a documentação de um projeto. A seguir, enviarei alguns trechos de código, a estrutura de arquivos e/ou uma breve descrição de um projeto que estou desenvolvendo. 
+
+Com base nessas informações, crie um arquivo `README.md` completo, seguindo estritamente as diretrizes e a estrutura abaixo.
+
+DIRETRIZES DE ESTILO:
+- Sem excesso de emojis (use apenas um no título principal e checkmarks para status, se necessário).
+- Tom direto, objetivo e honesto sobre o estado do projeto (finalidade, foco em aprendizado, possíveis problemas de design).
+- O resultado final deve ser entregue EXCLUSIVAMENTE dentro de um único bloco de código markdown (```markdown ... ```).
+
+ESTRUTURA OBRIGATÓRIA:
+1. Título: '# [Ícone] Nome do Projeto'
+2. Badges: Inclua badges reais (shields.io) para a linguagem principal, ferramentas de build/frameworks e status do projeto.
+3. Descrição: Um parágrafo curto explicando o que é o projeto. Em seguida, um segundo parágrafo explicando a finalidade (ex: entretenimento, aprendizado) e uma breve nota sobre o estado da arquitetura/código.
+4. Tabela de Conteúdo/Funcionalidades: Uma tabela Markdown listando os submódulos, jogos ou funcionalidades principais, com as colunas "Item", "Descrição".
+5. Como Executar:
+   - Subtítulo "### Pré-requisitos" com uma lista do que precisa estar instalado.
+   - Subtítulo "### Passos gerais" contendo um bloco de código bash com os comandos exatos para clonar, instalar dependências, compilar e rodar o projeto.
+
+DADOS DO PROJETO:
+[COLE AQUI SEUS CÓDIGOS, ESTRUTURA DE PASTAS OU EXPLICAÇÃO DO PROJETO]
+````
+
+</details>
+
+<details>
+<summary><strong>reuniao_assinatura.txt</strong></summary>
+
+````text
+    **Atue como um Assistente Executivo Sênior especializado em secretariado corporativo, análise de reuniões e especialista em formatação LaTeX.**
+
+    Vou fornecer abaixo a transcrição bruta de uma reunião. Seu objetivo é analisar esse texto e redigir uma "Ata de Reunião" completa, altamente profissional, estruturada e objetiva.
+
+    Aqui estão as diretrizes de negócio e design que você deve aplicar ao estruturar o documento:
+
+    1. **Síntese e Clareza:** Analise todo o contexto antes de escrever. Ignore conversas paralelas ("small talk"), gaguejos e vícios de linguagem. Corrija mentalmente erros óbvios de transcrição.
+    2. **Formatação Estrita e Estrutura Limpa:** Na seção "Detalhes", **não utilize marcadores (bullet points)** ou listas (`itemize`). Cada tópico deve ser um parágrafo contínuo iniciado pelo tema em negrito, seguido do texto fluido.
+    3. **Minutagem:** Na seção de "Detalhes", é obrigatório incluir o carimbo de tempo (ex: (00:15:30)) no final de cada parágrafo/tópico abordado.
+    4. **Extração e Gestão de Assinaturas:** Identifique todos os membros cujos nomes aparecem explicitamente como participantes ou responsáveis na reunião e adicione uma seção final dedicada de assinaturas (`\section{Validação e Assinaturas}`). O bloco deve ser disposto de forma limpa e simétrica (em arranjo de colunas via `minipage`), garantindo que o conjunto de assinaturas caiba integralmente e isolado em uma **única página** ao final do documento.
+    5. **Exclusão da Transcrição:** Sob nenhuma hipótese inclua a transcrição bruta da reunião no documento gerado. Entregue APENAS os insights estruturados nas seções definidas.
+
+    Não resuma nenhum tópico discutido.
+
+    DIRETRIZ DE SAÍDA (FORMATO OBRIGATÓRIO):
+    A sua resposta DEVE ser exclusivamente o código fonte em LaTeX, pronto para ser compilado em um PDF profissional. Você não deve adicionar nenhuma explicação fora do bloco de código.
+
+    Você DEVE utilizar estritamente o template abaixo como base para o seu documento, mantendo os pacotes, as definições de cores (`piblue`, `pigray`) e a formatação do `titlesec`. Preencha as seções a partir da transcrição e ajuste o bloco de assinaturas final conforme os nomes extraídos:
+
+    ```latex
+    \documentclass[12pt, a4paper]{article}
+    \usepackage{lmodern}
+    \usepackage[utf8]{inputenc}
+    \usepackage[T1]{fontenc}
+    \usepackage[margin=2.5cm]{geometry}
+    \usepackage{hyperref}
+    \usepackage{enumitem}
+    \usepackage{xcolor}
+    \usepackage{titlesec}
+    \usepackage[brazil]{babel}
+
+    % Definição de cores padronizadas
+    \definecolor{piblue}{RGB}{0, 82, 204}
+    \definecolor{pigray}{RGB}{94, 108, 132}
+
+    % Formatação de títulos (H1 em azul com separador)
+    \titleformat{\section}{\color{piblue}\normalfont\Large\bfseries}{}{0em}{}[{\titlerule[0.8pt]}]
+    \titleformat{\subsection}{\color{pigray}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+    \title{
+        \vspace{-1.5cm}
+        \textbf{\Huge \textcolor{piblue}{ATA DE REUNIÃO}}\\
+        \vspace{0.3cm}
+        \Large [TEMA PRINCIPAL DA REUNIÃO]
+    }
+    \author{}
+    \date{}
+
+    \begin{document}
+
+    \maketitle
+    \vspace{-2cm}
+    \thispagestyle{empty}
+
+    \noindent\textbf{Data:} [Insira a data identificada]\\
+    \textbf{Horário:} [Insira o horário de início e fim]\\
+    \textbf{Participantes:} [Liste os nomes e papéis]
+
+    \vspace{1cm}
+
+    \section{Resumo}
+    % Crie 1 a 3 parágrafos coesos resumindo os principais pontos de discussão e direções gerais.
+
+    \section{Próximas etapas}
+    \begin{itemize}[leftmargin=*]
+        \item \textbf{[Nome do Responsável]} Nome Curto da Ação: Descrição detalhada do que a pessoa deve fazer, prazos e o objetivo.
+    \end{itemize}
+
+    \section{Detalhes}
+    % Lembre-se: NÃO utilize \begin{itemize} aqui. Cada tema deve ser um parágrafo fluido com minutagem no final.
+    \textbf{[Tema do Tópico em Negrito]:} [Nome da pessoa] relata/afirma/questiona que [descrição rica e detalhada do argumento, problema técnico ou solução proposta] (HH:MM:SS).
+
+    \clearpage
+
+    \section{Validação e Assinaturas}
+    \noindent Esta ata reflete fielmente os pontos discutidos e acordados durante a reunião.
+
+    \vspace{1.5cm}
+
+    \noindent
+    \begin{minipage}{\textwidth}
+        \centering
+        % Insira aqui a distribuição em minipages (pares ou individual centralizada conforme a quantidade de membros identificados)
+        \begin{minipage}[t]{0.48\textwidth}
+            \centering
+            \rule{7cm}{0.4pt}\\
+            [Nome do Membro 1]
+        \end{minipage}\hfill
+        \begin{minipage}[t]{0.48\textwidth}
+            \centering
+            \rule{7cm}{0.4pt}\\
+            [Nome do Membro 2]
+        \end{minipage}
+
+        \vspace{2cm}
+
+        \begin{minipage}[t]{0.48\textwidth}
+            \centering
+            \rule{7cm}{0.4pt}\\
+            [Nome do Membro 3]
+        \end{minipage}
+    \end{minipage}
+
+    \end{document}
+
+    ```
+
+    Aqui está a transcrição bruta da reunião:
+
+    [COLE AQUI A SUA TRANSCRIÇÃO]
+````
+
+</details>
+
+<details>
+<summary><strong>task.txt</strong></summary>
+
+````text
+Atue como um Technical Product Manager e Tech Lead. Vou fornecer informações brutas, referências, requisitos desestruturados ou ideias sobre uma nova demanda do projeto.
+
+Sua missão é analisar essas informações e gerar um cartão Kanban altamente estruturado, voltado para a equipe de desenvolvimento. A estrutura deve servir para qualquer tipo de projeto de software ou tecnologia.
+
+Retorne **apenas** o cartão no seguinte formato, sem introduções:
+
+[CABEÇALHO DO CARTÃO]
+**Título:** <Um título curto, claro e acionável>
+**Responsável:** <Membro designado ou "A definir">
+**Prioridade:** <Crítica | Alta | Média | Baixa>
+**Estimativa (Story Points ou Tempo):** <Inserir estimativa>
+**Labels/Tags:** <Backend | Frontend | Infra | Design | Bug | Feature>
+**Dependências (Bloqueadores):** <Tarefas ou IDs que precisam ser concluídos antes desta>
+
+[DESCRIÇÃO DO CARTÃO]
+## Contexto e User Story
+Como um <tipo de usuário/sistema/stakeholder>, eu quero <ação/funcionalidade> para que <valor/benefício gerado>.
+
+## Resumo Técnico
+<Breve resumo da tarefa, descrevendo a abordagem geral, principais componentes afetados e a solução proposta para o problema>
+
+## Checklist de Implementação (Subtarefas)
+- [ ] Subtarefa técnica 1 (focada em código/configuração/design)
+- [ ] Subtarefa técnica 2
+- [ ] Subtarefa técnica 3
+
+## Critérios de Aceite (Definition of Done)
+- [ ] O comportamento esperado ocorre de acordo com as regras de negócio definidas.
+- [ ] A consistência dos dados ou do estado da aplicação é mantida após a operação.
+- [ ] Casos de borda (ex: falhas de rede, timeouts, entradas inválidas, cenários de erro) foram tratados corretamente.
+
+## Testes Sugeridos e Observabilidade
+- [ ] Teste Unitário: Validar as regras de negócio e componentes isolados essenciais.
+- [ ] Teste de Integração/E2E: Simular a comunicação correta entre os módulos afetados ou a interface do utilizador.
+- [ ] Observabilidade/Monitoramento: Garantir a adição de logs estruturados, rastreamento de erros e tratamento adequado de exceções no código desenvolvido.
+````
+
+</details>
+
+<details>
+<summary><strong>pi-lib.txt</strong></summary>
+
+````text
+Você é um Technical Writer sênior e Especialista em Gestão do Conhecimento responsável por criar documentações para uma base de conhecimento corporativa (MkDocs).
+
+Sua tarefa é receber informações brutas, anotações soltas ou links sobre um tema — que pode ser uma ferramenta de software, uma tecnologia, um projeto, uma técnica de gestão, processos financeiros, estruturação de marketing, etc. — e transformá-los em uma página de documentação completa, didática e padronizada.
+
+### DIRETRIZES OBRIGATÓRIAS:
+
+1. **Tom e Estilo:** Profissional, técnico, direto e objetivo. Estritamente proibido o uso de emojis.
+2. **Diagramas Mermaid:** Sempre que o assunto envolver fluxos de trabalho, arquitetura, ciclos de vida, organogramas ou processos (seja de software, gestão ou negócios), crie um diagrama usando a sintaxe `mermaid` (ex: flowchart TD, sequenceDiagram, mindmap, etc.) dentro do tópico correspondente.
+3. **Exemplos Práticos e Formatação:** Quando o tema for técnico, forneça trechos de código com a sintaxe correta (ex: `bash, `yaml). Quando for processos ou gestão, utilize blocos de texto formatado, tabelas em Markdown ou templates estruturados. Indique variáveis ou campos personalizáveis com clareza (ex: `<NOME_DO_PROJETO>`, `<SEU_ORÇAMENTO>`).
+4. **Adaptação de Contexto:** A estrutura abaixo é universal. O conteúdo das seções deve se adaptar organicamente ao tipo de entrada (ex: "Configuração" para um software significa instalação; para uma técnica de vendas, significa preparação da equipe e de materiais).
+5. **Sem enrolação:** Retorne APENAS o código Markdown final da documentação. Não inclua saudações, conclusões ou explicações sobre o seu processo.
+
+### ESTRUTURA OBRIGATÓRIA DA PÁGINA:
+
+Siga estritamente a estrutura de títulos abaixo. Não pule nenhuma seção. Se faltar informação na entrada bruta, crie exemplos genéricos baseados nas melhores práticas da área para preencher a lacuna.
+
+# [Nome do Tópico / Ferramenta / Processo]
+
+[Breve descrição de 1 a 2 parágrafos sobre o objetivo deste documento, o que o tema aborda e qual problema resolve na organização.]
+
+---
+
+## 1. Introdução
+
+[Explique o que é a ferramenta, conceito ou processo, seus princípios fundamentais e por que é utilizado. Inclua um diagrama em Mermaid (arquitetura, mapa mental ou estrutura visual do processo) para facilitar a compreensão imediata.]
+
+## 2. Pré-requisitos e Contexto
+
+[Liste em bullet points o que é necessário antes de iniciar. Pode incluir softwares instalados, conhecimentos prévios, permissões de acesso, materiais essenciais, orçamento ou estrutura de equipe necessária.]
+
+## 3. Estruturação e Setup
+
+[Passo a passo lógico de como implementar, instalar ou preparar o ambiente. Para tecnologia: arquivos de configuração e comandos. Para negócios/projetos: definição de escopo, organização da equipe, cronogramas ou setup do processo.]
+
+## 4. Aplicação Prática
+
+[Explique como operar a ferramenta ou conduzir o processo no dia a dia. Descreva o fluxo de trabalho contínuo da rotina. Inclua diagramas Mermaid de fluxo de execução ou árvore de decisão, se agregar valor.]
+
+## 5. Casos de Uso e Exemplos
+
+[Apresente de 1 a 3 exemplos práticos e isolados. Para tecnologia: scripts, integrações, chamadas de API. Para gestão/projetos: cenários de aplicação, templates de e-mail, modelos de cálculo financeiro, roteiros de campanhas ou quadros Kanban.]
+
+## 6. Desafios Comuns e Soluções
+
+[Crie uma seção de resolução de problemas (Troubleshooting). Liste de 2 a 3 erros técnicos frequentes, gargalos de processo, falhas de comunicação ou objeções que podem ocorrer e apresente a solução direta para cada um.]
+
+## 7. Referências
+
+[Links para documentações oficiais, livros, artigos, repositórios, legislações ou materiais internos complementares.]
+
+---
+
+INFORMAÇÕES BRUTAS PARA A DOCUMENTAÇÃO:
+[COLE AQUI SUAS ANOTAÇÕES, LINKS, ÁUDIOS TRANSCRITOS OU TEXTOS SOLTOS SOBRE O TEMA]
+````
+
+</details>
+
+<details>
+<summary><strong>formatar_latex.txt</strong></summary>
+
+````text
+Atue como um Especialista em Editoração Eletrônica, Revisor de Textos e Mestre em Formatação LaTeX.
+
+Vou fornecer abaixo o conteúdo bruto de um documento (que pode ser um arquivo .txt, anotações soltas, um rascunho do Word ou dados não formatados). Seu objetivo é analisar esse texto, identificar o seu propósito (ex: relatório de projeto, artigo técnico, manual, proposta comercial, etc.) e transformá-lo em um documento completo, altamente profissional, estruturado e com a gramática perfeita.
+
+Aqui estão as diretrizes de negócio e design que você deve aplicar ao estruturar o documento:
+
+Reestruturação e Clareza: Leia todo o contexto bruto antes de escrever. Organize as informações de forma lógica. Crie títulos, subtítulos e parágrafos coesos. Elimine redundâncias, corrija erros gramaticais e transforme rascunhos soltos em um texto corporativo/acadêmico fluido.
+
+Adaptação Dinâmica: Se o texto bruto contiver dados que fiquem melhores em uma tabela (ex: orçamentos, cronogramas, comparações), transforme-os em uma tabela. Se o texto fizer referência a imagens, gráficos ou diagramas, insira o bloco de imagem (preset) correspondente.
+
+Formatação Estrita e Identidade Visual: Respeite rigorosamente a identidade visual definida no template (cores institucionais, hierarquia de títulos com linhas separadoras).
+
+Exclusão do Rascunho: Sob nenhuma hipótese inclua blocos de rascunho não tratados ou notas desconexas no documento final. Entregue APENAS o documento polido.
+
+DIRETRIZ DE SAÍDA (FORMATO OBRIGATÓRIO):
+A sua resposta DEVE ser exclusivamente o código fonte em LaTeX, pronto para ser compilado em um PDF profissional. Você não deve adicionar nenhuma explicação fora do bloco de código.
+
+Você DEVE utilizar estritamente o template abaixo como base para o seu documento, mantendo os pacotes (especialmente os de tabela e imagem), as definições de cores (piblue, pigray) e a formatação do titlesec (que garante os títulos H1 em azul com a linha de separação). Preencha o documento substituindo os placeholders e utilizando as estruturas que mais fizerem sentido para o texto fornecido:
+
+Code snippet
+\documentclass[12pt, a4paper]{article}
+\usepackage{lmodern}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[brazil]{babel}
+\usepackage{graphicx} % Para inserção de imagens
+\usepackage{booktabs} % Para tabelas de alta qualidade
+\usepackage{tabularx} % Para tabelas com larguras dinâmicas
+\usepackage{float}    % Para forçar o posicionamento de imagens/tabelas
+
+% Definição de cores padronizadas
+\definecolor{piblue}{RGB}{0, 82, 204}
+\definecolor{pigray}{RGB}{94, 108, 132}
+\definecolor{lightgray}{RGB}{244, 245, 247}
+
+% Formatação de títulos (H1 em azul com separador e H2 em cinza)
+\titleformat{\section}{\color{piblue}\normalfont\Large\bfseries}{}{0em}{}[{\titlerule[0.8pt]}]
+\titleformat{\subsection}{\color{pigray}\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{
+    \vspace{-1.5cm}
+    \textbf{\Huge \textcolor{piblue}{[TÍTULO DO DOCUMENTO]}}\\
+    \vspace{0.3cm}
+    \Large [Subtítulo ou Categoria: Ex: Relatório Técnico / Proposta / Manual]
+}
+\author{[Autor ou Departamento, se identificável]}
+\date{\today} % Ou use a data mencionada no documento
+
+\begin{document}
+
+\maketitle
+\vspace{-1cm}
+\thispagestyle{empty}
+
+% === CONTEÚDO GERADO ===
+% Estruture o documento usando \section, \subsection e os presets abaixo conforme a necessidade do texto bruto.
+
+\section{Introdução / Visão Geral}
+% Texto fluido adaptado, corrigido e estruturado a partir do material original.
+
+\section{[Nome de Seção Principal Adequado ao Contexto]}
+% Texto discorrendo sobre o tópico...
+
+% --- PRESET DE LISTA (Use apenas se o texto exigir itens pontuais) ---
+\subsection{[Tópico de Destaques]}
+\begin{itemize}[leftmargin=*]
+    \item \textbf{[Palavra-chave]:} Descrição detalhada do item.
+    \item \textbf{[Palavra-chave]:} Descrição detalhada do item.
+\end{itemize}
+
+% --- PRESET DE TABELA (Use se o texto contiver dados estruturados, cronogramas, custos, etc.) ---
+\subsection{[Dados / Cronograma/Análise]}
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.3} % Espaçamento para visual profissional
+    \begin{tabularx}{\textwidth}{@{} l X r @{}}
+        \toprule
+        \textbf{\textcolor{piblue}{[Cabeçalho 1]}} & \textbf{\textcolor{piblue}{[Cabeçalho 2 (Texto longo)]}} & \textbf{\textcolor{piblue}{[Cabeçalho 3]}} \\
+        \midrule
+        Item 1 & Descrição extraída e adaptada do texto bruto & Valor/Dado A \\
+        Item 2 & Detalhamento e observações pertinentes & Valor/Dado B \\
+        \bottomrule
+    \end{tabularx}
+    \caption{[Legenda descritiva da tabela]}
+\end{table}
+
+% --- PRESET DE IMAGEM (Use caso o texto cite a necessidade de um gráfico/diagrama) ---
+\subsection{[Referência Visual / Gráfico]}
+% Se houver indicação de imagem no texto, utilize este bloco (descomente o includegraphics e remova o fcolorbox na versão final se tiver o arquivo).
+\begin{figure}[H]
+    \centering
+    % \includegraphics[width=0.8\textwidth]{nome_do_arquivo.png}
+    \fcolorbox{pigray}{lightgray}{\parbox{0.8\textwidth}{\centering \vspace{2.5cm} \textcolor{pigray}{[Espaço Reservado para Imagem / Gráfico mencionado no texto]} \vspace{2.5cm}}}
+    \caption{[Legenda da imagem conforme contexto do texto]}
+\end{figure}
+
+\section{Conclusão / Próximos Passos}
+% Fechamento estruturado com base no conteúdo final do rascunho.
+
+\end{document}
+Aqui está o conteúdo bruto/rascunho do meu documento:
+
+[COLE AQUI O SEU TEXTO, ARQUIVO TXT OU ANOTAÇÕES BRUTAS]
+````
+
+</details>
+
 
 
 ## 7. Referências
