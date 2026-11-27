@@ -84,6 +84,8 @@ nav:
       - Desenvolvimento e depuração:
           - Terminal Bash: tools/terminal-bash.md
           - Chrome DevTools: tools/devtools.md
+      - Ambientes e dependências:
+          - Ambientes virtuais Python e uv: tools/python-uv.md
       - Documentação:
           - MkDocs: tools/docs.md
       - Inteligência artificial:
