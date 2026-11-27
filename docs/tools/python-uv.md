@@ -615,3 +615,219 @@ flowchart TD
 ```
 
 O objetivo desse fluxo é garantir que o projeto tenha suas dependências declaradas e que o ambiente possa ser reconstruído em outras máquinas sem a necessidade de compartilhar a pasta `.venv`.
+
+## 8. Arquivos de Configuração e Gerenciamento do uv
+
+O uv utiliza arquivos de configuração para registrar informações sobre o projeto, suas dependências e a versão do interpretador Python utilizada.
+
+Os três arquivos mais importantes nesse processo são:
+
+- `pyproject.toml`
+- `uv.lock`
+- `.python-version`
+
+Eles possuem finalidades diferentes, mas trabalham em conjunto para permitir que o ambiente de desenvolvimento seja reproduzido em outras máquinas.
+
+### 8.1. O arquivo `pyproject.toml`
+
+O `pyproject.toml` é um arquivo padronizado utilizado para armazenar metadados e configurações de projetos Python.
+
+No contexto do uv, ele é utilizado principalmente para declarar informações como:
+
+- Nome e versão do projeto.
+- Descrição e autoria.
+- Versões do Python compatíveis com o projeto.
+- Dependências necessárias para executar a aplicação.
+- Dependências utilizadas durante o desenvolvimento.
+- Configurações de ferramentas utilizadas no projeto.
+
+Considere o seguinte exemplo simplificado:
+
+```toml
+[project]
+name = "meu-projeto"
+version = "0.1.0"
+description = "Exemplo de projeto Python"
+requires-python = ">=3.12"
+dependencies = [
+    "requests>=2.31",
+    "pandas>=2.0"
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0"
+]
+```
+
+Nesse exemplo:
+
+- `[project]`: reúne os metadados e as configurações principais do projeto.
+- `name`: define o nome do projeto.
+- `version`: indica sua versão.
+- `description`: apresenta uma breve descrição.
+- `requires-python`: determina quais versões do Python são compatíveis com o projeto.
+- `dependencies`: lista as bibliotecas necessárias para executar a aplicação.
+- `[dependency-groups]`: organiza dependências utilizadas em atividades específicas, como desenvolvimento e testes.
+- `dev`: representa um grupo de dependências de desenvolvimento. Nesse caso, o projeto utiliza `pytest` para executar testes automatizados.
+
+Uma diferença importante é que as dependências de desenvolvimento não precisam ser dependências da aplicação em produção.
+
+Por exemplo, `pytest` é necessário para executar testes, mas não necessariamente para executar a aplicação.
+
+Também podemos adicionar dependências de desenvolvimento pelo terminal:
+
+```bash
+uv add --dev pytest
+```
+
+O uv registra essa dependência no grupo de desenvolvimento do `pyproject.toml` e atualiza o arquivo de lock.
+
+**Importante:** o `pyproject.toml` pode ser editado manualmente, mas é recomendável utilizar os comandos do uv para adicionar ou remover dependências, evitando inconsistências entre os arquivos do projeto.
+
+### 8.2. O arquivo `uv.lock`
+
+O `uv.lock` é o arquivo de lock do projeto. Sua função é registrar as versões exatas das dependências selecionadas durante a resolução.
+
+Para compreender sua importância, considere a seguinte situação:
+
+Um projeto declara que precisa da biblioteca `requests` em uma versão igual ou superior a 2.31.
+
+Essa declaração permite que diferentes versões compatíveis sejam selecionadas. Entretanto, se cada desenvolvedor instalar o projeto em momentos diferentes, poderá acabar utilizando versões distintas.
+
+O arquivo `uv.lock` resolve esse problema ao registrar as versões específicas selecionadas, incluindo as dependências transitivas.
+
+Por exemplo, uma parte simplificada de um arquivo de lock poderia conter:
+
+```toml
+version = 1
+revision = 3
+
+[[package]]
+name = "requests"
+version = "2.32.3"
+source = { registry = "https://pypi.org/simple" }
+
+[[package]]
+name = "urllib3"
+version = "2.2.3"
+source = { registry = "https://pypi.org/simple" }
+```
+
+O conteúdo real do arquivo é maior e possui informações adicionais, como dependências, hashes e condições de instalação.
+
+O arquivo é gerenciado pelo uv e não deve ser editado manualmente.
+
+#### Por que versionar o `uv.lock`?
+
+O `uv.lock` deve ser enviado ao GitHub junto com o código-fonte e o `pyproject.toml`.
+
+Isso permite que os demais desenvolvedores utilizem as mesmas versões resolvidas de dependências, reduzindo diferenças entre ambientes.
+
+Quando alguém executa:
+
+```bash
+uv sync
+```
+
+O uv utiliza o arquivo de lock para preparar o ambiente de acordo com as versões registradas.
+
+Se uma dependência for adicionada ou removida, o uv atualizará o arquivo de lock automaticamente durante a operação.
+
+Também podemos solicitar explicitamente a atualização ou criação do arquivo utilizando:
+
+```bash
+uv lock
+```
+
+### 8.3. O arquivo `.python-version`
+
+O `.python-version` é um arquivo de texto simples que indica a versão padrão do Python utilizada pelo projeto.
+
+Por exemplo, seu conteúdo pode ser:
+
+```text
+3.12
+```
+
+Esse arquivo ajuda o uv a identificar qual versão do interpretador deve priorizar ao executar operações relacionadas ao projeto.
+
+Para definir a versão padrão, podemos utilizar:
+
+```bash
+uv python pin 3.12
+```
+
+O comando cria ou atualiza o arquivo `.python-version` com a versão informada.
+
+Caso a versão do Python ainda não esteja instalada, podemos solicitar sua instalação com:
+
+```bash
+uv python install 3.12
+```
+
+É importante diferenciar o `.python-version` do campo `requires-python` no `pyproject.toml`.
+
+Embora estejam relacionados, eles não possuem a mesma finalidade:
+
+| Arquivo ou configuração | Finalidade |
+|---|---|
+| `.python-version` | Indica a versão padrão do Python utilizada no projeto. |
+| `requires-python` | Declara o intervalo de versões do Python com o qual o projeto é compatível. |
+
+Por exemplo, um projeto pode utilizar Python 3.12 como versão padrão, mas declarar que é compatível com versões a partir de 3.11:
+
+```toml
+[project]
+requires-python = ">=3.11"
+```
+
+Nesse caso, o projeto declara compatibilidade com Python 3.11 ou superior, enquanto o `.python-version` indica a versão 3.12 como referência para o ambiente de desenvolvimento.
+
+### 8.4. Como os três arquivos trabalham juntos?
+
+Os três arquivos cumprem funções complementares:
+
+```mermaid
+flowchart TD
+    A[".python-version"] --> B["Seleciona a versão padrão do Python"]
+    C["pyproject.toml"] --> D["Declara dependências e requisitos"]
+    D --> E["uv resolve as dependências"]
+    E --> F["uv.lock"]
+    B --> G["uv prepara o ambiente virtual"]
+    F --> G
+    G --> H[".venv com as dependências instaladas"]
+```
+
+O funcionamento pode ser resumido da seguinte maneira:
+
+1. O `.python-version` indica a versão padrão do Python para o projeto.
+2. O `pyproject.toml` declara as dependências e os requisitos de compatibilidade.
+3. O uv resolve as dependências e registra as versões selecionadas no `uv.lock`.
+4. O `uv sync` utiliza essas informações para preparar ou atualizar o ambiente virtual.
+5. O código pode ser executado utilizando `uv run`.
+
+Dessa forma, os arquivos permitem separar a declaração das necessidades do projeto, o registro das versões resolvidas e a seleção do interpretador Python.
+
+### 8.5. Boas práticas para projetos da Pi Júnior
+
+Para manter os projetos organizados e facilitar o trabalho colaborativo, recomenda-se:
+
+- Manter o `pyproject.toml` atualizado com as dependências utilizadas pelo projeto.
+- Versionar o `uv.lock` no GitHub para preservar as versões resolvidas.
+- Versionar o `.python-version` para indicar a versão padrão do Python.
+- Não versionar a pasta `.venv`.
+- Utilizar `uv add` e `uv remove` para gerenciar dependências.
+- Executar `uv sync` após clonar um projeto ou receber alterações nas dependências.
+- Utilizar `uv run` para executar comandos no ambiente do projeto.
+- Separar dependências de execução e de desenvolvimento sempre que fizer sentido.
+
+Seguindo essas práticas, a equipe consegue compartilhar projetos Python com maior previsibilidade, organização e facilidade de manutenção.
+
+## 9. Referências Principais
+
+- [Documentação oficial do uv — Working on Projects](https://docs.astral.sh/uv/guides/projects/)
+- [Documentação oficial do uv — Managing Dependencies](https://docs.astral.sh/uv/concepts/dependencies/)
+- [Documentação oficial do uv — Project Configuration](https://docs.astral.sh/uv/concepts/projects/config/)
+- [Documentação oficial do uv — Resolution](https://docs.astral.sh/uv/concepts/resolution/)
+- [Python Packaging User Guide](https://packaging.python.org/)
